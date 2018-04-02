@@ -1,5 +1,8 @@
 ﻿namespace SingletonPattern
 {
+    /// <summary>
+    /// 双重锁，饱汉模式（懒汉式），用到的时候再去实例化
+    /// </summary>
     public class Singleton
     {
         private static Singleton _instance;

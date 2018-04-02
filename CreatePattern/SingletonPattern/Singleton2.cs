@@ -3,8 +3,7 @@
 namespace SingletonPattern
 {
     /// <summary>
-    /// Custom Singleton
-    /// 自定义实现的单例方法，大话设计模式中没有
+    /// 使用 ConcurrentDictionary 实现的单例方法，用到的时候再去实例化
     /// </summary>
     public class Singleton2
     {
