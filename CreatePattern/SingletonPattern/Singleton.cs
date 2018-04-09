@@ -1,7 +1,7 @@
 ﻿namespace SingletonPattern
 {
     /// <summary>
-    /// 双重锁，饱汉模式（懒汉式），用到的时候再去实例化
+    /// 双重判空加锁，饱汉模式（懒汉式），用到的时候再去实例化
     /// </summary>
     public class Singleton
     {
