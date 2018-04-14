@@ -12,32 +12,32 @@ Design patterns from 《大话设计模式》 and implemented by C# language.
 
 - 创建型模式（Create）
     1. [简单工厂（SimpleFactory）](./CreatePattern/SimpleFactoryPattern)
-    1. 抽象工厂（AbstractFactory）
-    1. 工厂方法（FactoryMethod）
-    1. 建造者模式（Builder）
-    1. 原型模式（Prototype）
+    1. [抽象工厂（AbstractFactory）](./CreatePattern/AbstractFactoryPattern)
+    1. [工厂方法（FactoryMethod）](./CreatePattern/FactoryMethodPattern)
+    1. [建造者模式（Builder）](./CreatePattern/BuilderPattern)
+    1. [原型模式（Prototype）](./CreatePattern/PrototypePattern)
     1. [单例模式（Singleton）](./CreatePattern/SingletonPattern)
 
 - 结构型模式（Structure）
-    1. 适配器模式（Adapter）
-    1. 桥接模式（Bridge）
-    1. 组合模式（Composite）
-    1. 装饰者模式（Decorator）
-    1. 外观模式（Facade）
-    1. 享元模式（Flyweight）
-    1. 代理模式（Proxy）
+    1. [适配器模式（Adapter）](./StructurePattern/AdapterPattern)
+    1. [桥接模式（Bridge）](./StructurePattern/BridgePattern)
+    1. [组合模式（Composite）](./StructurePattern/CompositePattern)
+    1. [装饰者模式（Decorator）](./StructurePattern/DecoratorPattern)
+    1. [外观模式（Facade）](./StructurePattern/FacadePattern)
+    1. [享元模式（Flyweight）](./StructurePattern/FlyweightPattern)
+    1. [代理模式（Proxy）](./StructurePattern/ProxyPattern)
 
 - 行为型模式（Behavior）
-    1. 观察者模式（Observer）
-    1. 模板方法（TemplateMethod）
-    1. 命令模式（Command）
-    1. 状态模式（State）
-    1. 职责链模式（Chain of Responsibility）
-    1. 解释器模式（Interpreter）
-    1. 中介者模式（Mediator）
-    1. 访问者模式（Visitor）
-    1. 备忘录模式（Memento）
-    1. 迭代器模式（Iterator）
+    1. [观察者模式（Observer）](./BehaviorPattern/ObserverPattern)
+    1. [模板方法（TemplateMethod）](./BehaviorPattern/TemplateMethodPattern)
+    1. [命令模式（Command）](./BehaviorPattern/CommandPattern)
+    1. [状态模式（State）](./BehaviorPattern/StatePattern)
+    1. [职责链模式（Chain of Responsibility）](./BehaviorPattern/ChainOfResponsibilityPattern)
+    1. [解释器模式（Interpreter）](./BehaviorPattern/InterpreterPattern)
+    1. [中介者模式（Mediator）](./BehaviorPattern/MediatorPattern)
+    1. [访问者模式（Visitor）](./BehaviorPattern/VisitorPattern)
+    1. [备忘录模式（Memento）](./BehaviorPattern/MementoPattern)
+    1. [迭代器模式（Iterator）](./BehaviorPattern/IteratorPattern)
 
 ## Contact
 
