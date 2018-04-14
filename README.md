@@ -11,12 +11,12 @@ Design patterns from 《大话设计模式》 and implemented by C# language.
 设计模式大体上可分为三类：
 
 - 创建型模式（Create）
-    1. 简单工厂（SimpleFactory）
+    1. [简单工厂（SimpleFactory）](./CreatePattern/SimpleFactoryPattern)
     1. 抽象工厂（AbstractFactory）
     1. 工厂方法（FactoryMethod）
     1. 建造者模式（Builder）
     1. 原型模式（Prototype）
-    1. 单例模式（Singleton）
+    1. [单例模式（Singleton）](./CreatePattern/SingletonPattern)
 
 - 结构型模式（Structure）
     1. 适配器模式（Adapter）

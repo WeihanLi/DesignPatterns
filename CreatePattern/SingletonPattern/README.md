@@ -12,7 +12,7 @@
 
 基本实现方式是将构造方法私有化，让实例的过程控制在类的内部去完成并对外部提供一个访问实例的方式。
 
-1. 双重锁顶(double-check locking)（懒汉模式）
+1. 双重锁定(double-check locking)（懒汉模式）
 
     ``` csharp
     /// <summary>
