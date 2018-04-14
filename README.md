@@ -4,13 +4,13 @@
 
 Design patterns from 《大话设计模式》 and implemented by C# language.
 
-《大话设计模式》 中设计模式总结/C#代码实现
+《大话设计模式》 中设计模式总结/C#代码实现，示例代码是以 .NetCore2.0 写的，如果要自己编译请[下载](https://www.microsoft.com/net/download)安装 .NetCore Sdk
 
 ## Overview 概览
 
 设计模式大体上可分为三类：
 
-- 创建型模式
+- 创建型模式（Create）
     1. 简单工厂（SimpleFactory）
     1. 抽象工厂（AbstractFactory）
     1. 工厂方法（FactoryMethod）
@@ -18,7 +18,7 @@ Design patterns from 《大话设计模式》 and implemented by C# language.
     1. 原型模式（Prototype）
     1. 单例模式（Singleton）
 
-- 结构型模式
+- 结构型模式（Structure）
     1. 适配器模式（Adapter）
     1. 桥接模式（Bridge）
     1. 组合模式（Composite）
@@ -27,7 +27,7 @@ Design patterns from 《大话设计模式》 and implemented by C# language.
     1. 享元模式（Flyweight）
     1. 代理模式（Proxy）
 
-- 行为型模式
+- 行为型模式（Behavior）
     1. 观察者模式（Observer）
     1. 模板方法（TemplateMethod）
     1. 命令模式（Command）
@@ -38,3 +38,7 @@ Design patterns from 《大话设计模式》 and implemented by C# language.
     1. 访问者模式（Visitor）
     1. 备忘录模式（Memento）
     1. 迭代器模式（Iterator）
+
+## Contact
+
+Contact me: <weihanli@outlook.com>

@@ -2,13 +2,17 @@
 
 ## Intro
 
-单例模式主要用来确保某个类型的实例只能有一个。
+> 单例模式，保证一个类仅有一个实例，并提供一个访问它的全局访问点。
 
-基本实现方式是将构造方法私有化，让实例的过程控制在类的内部去完成。
+## 场景
+
+单例模式主要用来确保某个类型的实例只能有一个。比如手机上的蓝牙之类的只可能有一个的实例的场景可以考虑用单例模式。
 
 ## 实现方式
 
-1. 双重判空加锁（懒汉模式）
+基本实现方式是将构造方法私有化，让实例的过程控制在类的内部去完成并对外部提供一个访问实例的方式。
+
+1. 双重锁顶(double-check locking)（懒汉模式）
 
     ``` csharp
     /// <summary>
@@ -67,6 +71,7 @@
     ``` csharp
     /// <summary>
     /// 使用 ConcurrentDictionary 实现的单例方法，用到的时候再去实例化
+    /// 这种方式类似于第一种方式，只是使用了并发集合代替了双重判断和 lock
     /// </summary>
     public class Singleton2
     {
@@ -79,3 +84,7 @@
         public static Singleton2 GetInstance() => Instances.GetOrAdd(1, k => new Singleton2());
     }
     ```
+
+## More
+
+更多设计模式及示例代码 [传送门](https://github.com/WeihanLi/DesignPatterns)

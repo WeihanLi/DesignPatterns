@@ -4,6 +4,7 @@ namespace SingletonPattern
 {
     /// <summary>
     /// 使用 ConcurrentDictionary 实现的单例方法，用到的时候再去实例化
+    /// 这种方式类似于双重锁定方式，只是使用了并发集合代替了双重判断和 lock
     /// </summary>
     public class Singleton2
     {
