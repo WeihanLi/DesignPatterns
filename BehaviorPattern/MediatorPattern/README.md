@@ -20,7 +20,6 @@
 
   > 由于 `ConcreteMediator` 控制了集中化，于是就把交互复杂性变为了中介者的复杂性，这就使得中介者会变得比任何一个 `ConcreteColleague` 都复杂
 
-
 ## More
 
 更多设计模式及示例代码 [传送门](https://github.com/WeihanLi/DesignPatterns)
