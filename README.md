@@ -32,6 +32,7 @@ Design patterns from 《大话设计模式》 and implemented by C# language.
 - 接口隔离原则
 
     > 使用多个隔离的接口,比使用单个接口好，建立最小的接口
+    >
     > 一个接口只负责一个功能
 
 - 迪米特法则
