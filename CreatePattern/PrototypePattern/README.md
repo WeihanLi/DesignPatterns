@@ -10,6 +10,8 @@
 
 实现方式大致如下：
 
+在 c# 中可以实现 `ICloneable` 接口来方便的实现原型模式
+
 ``` csharp
 // 浅复制
 public object Clone() => MemberwiseClone();
