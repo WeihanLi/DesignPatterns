@@ -8,6 +8,8 @@
 
 备忘录（Memento）模式比较适用于功能比较复杂的，但需要维护或记录属性历史的类，或者需要保存的属性只是众多属性中的一小部分时，`Originator` 可以根据保存的 `Memento` 信息还原到前一状态。
 
+可以用来做数据(状态)备份和恢复。
+
 ## More
 
 更多设计模式及示例代码 [传送门](https://github.com/WeihanLi/DesignPatterns)
