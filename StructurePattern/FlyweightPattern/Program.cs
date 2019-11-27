@@ -11,6 +11,9 @@ namespace FlyweightPattern
             var factory = new FlyWeightFactory();
             factory.GetFlyweight("X").Operation(counter--);
             factory.GetFlyweight("Y").Operation(counter--);
+            factory.GetFlyweight("X").Operation(counter--);
+            factory.GetFlyweight("X").Operation(counter--);
+
             new UnsharedFlyweight().Operation(counter--);
 
             Console.WriteLine(counter);
