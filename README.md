@@ -75,6 +75,7 @@ Design patterns from 《大话设计模式》 and implemented by C# language.
     1. [访问者模式（Visitor）](./BehaviorPattern/VisitorPattern)
     1. [备忘录模式（Memento）](./BehaviorPattern/MementoPattern)
     1. [迭代器模式（Iterator）](./BehaviorPattern/IteratorPattern)
+    1. [策略模式（Strategy）](./BehaviorPattern/StrategyPattern)
 
 ## Contact
 
