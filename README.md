@@ -60,7 +60,7 @@ Design patterns from 《大话设计模式》 and implemented by C# language.
     1. [桥接模式（Bridge）](./StructurePattern/BridgePattern)
     1. [组合模式（Composite）](./StructurePattern/CompositePattern)
     1. [装饰者模式（Decorator）](./StructurePattern/DecoratorPattern)
-    1. [外观模式（Facade）](./StructurePattern/FacadePattern)
+    1. [外观/门面模式（Facade）](./StructurePattern/FacadePattern)
     1. [享元模式（Flyweight）](./StructurePattern/FlyweightPattern)
     1. [代理模式（Proxy）](./StructurePattern/ProxyPattern)
 
