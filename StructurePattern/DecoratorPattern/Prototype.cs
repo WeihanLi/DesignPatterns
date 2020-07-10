@@ -47,7 +47,7 @@ namespace DecoratorPattern
         public override void Operation()
         {
             base.Operation();
-            Console.WriteLine("opertaion in DecoratorB");
+            Console.WriteLine("operation in DecoratorB");
             AddBehavior();
         }
 
