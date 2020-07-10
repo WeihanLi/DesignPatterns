@@ -24,7 +24,6 @@ userRepo = factory.CreateUserRepo();
 userRepo.Insert(null);
 ```
 
-
 ## 工厂方法和抽象工厂的区别
 
 工厂方法模式：定义一个用于创建对象的接口，让子类决定实例化哪一个类
