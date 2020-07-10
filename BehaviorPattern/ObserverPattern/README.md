@@ -99,6 +99,56 @@ boss.SubjectState = "老板我胡汉三回来了";
 boss.Notify();
 ```
 
+借助 event 我们可以实现可以灵活的观察者模式，我们定义了一个新老版来演示事件的方式，来看下面的示例：
+
+``` csharp
+internal class NewBoss : ISubject
+{
+    public event Action Update;
+
+    public void Notify()
+    {
+        Update?.Invoke();
+    }
+
+    public string SubjectState { get; set; }
+}
+
+internal class GamePlayerObserver
+{
+    private readonly string _name;
+    private readonly ISubject _subject;
+
+    public GamePlayerObserver(string name, ISubject subject)
+    {
+        _name = name;
+        _subject = subject;
+    }
+
+    public void CloseGame()
+    {
+        Console.WriteLine($"{_name} {_subject.SubjectState} 关闭 LOL 游戏，继续工作");
+    }
+}
+
+var newBoss = new NewBoss();
+var stockObserver = new StockObserver("魏关姹", boss);
+var nbaObserver = new NBAObserver("易管查", boss);
+var gameObserver = new GamePlayerObserver("西门", newBoss);
+
+// 注册通知事件
+newBoss.Update += stockObserver.Update;
+newBoss.Update += nbaObserver.Update;
+newBoss.Update += gameObserver.CloseGame;
+
+newBoss.Update -= stockObserver.Update;
+
+newBoss.SubjectState = "老板我胡汉三回来了";
+newBoss.Notify();
+```
+
+从上面这个示例可以看到，通过事件的方式，我们可以不要求显示继承于 `Observer` 这个抽象类，可以更加灵活，扩展性更强
+
 ## More
 
 更多设计模式及示例代码 [传送门](https://github.com/WeihanLi/DesignPatterns)
