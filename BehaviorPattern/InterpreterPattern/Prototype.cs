@@ -21,7 +21,7 @@ namespace InterpreterPattern
         }
     }
 
-    internal class NoneTerminalExpresssion : AbstractExpression
+    internal class NoneTerminalExpression : AbstractExpression
     {
         public override void Interpret(Context context)
         {

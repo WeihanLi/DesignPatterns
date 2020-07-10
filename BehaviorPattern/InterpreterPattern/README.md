@@ -2,7 +2,55 @@
 
 ## Intro
 
-解释器模式
+解释器模式，和解释型编程语言的解释器有点类似，要根据一段输入转换成一段输出，将不易读的文本转换为易读的文本，将机器不能识别的输入转成二进制机器可读的输出
+
+## Prototype
+
+- Context: 解释器上下文
+- AbstractExpression: 解释表达式抽象，定义解释操作
+- ConcreteExpression: 解释表达式实现类，实现具体的解释逻辑
+
+## Sample
+
+``` csharp
+internal class Context
+{
+    public string Input { get; set; }
+    public string Output { get; set; }
+}
+
+internal abstract class AbstractExpression
+{
+    public abstract void Interpret(Context context);
+}
+internal class TerminalExpression : AbstractExpression
+{
+    public override void Interpret(Context context)
+    {
+        Console.WriteLine("TerminalExpressionInterpreter");
+    }
+}
+internal class NoneTerminalExpression : AbstractExpression
+{
+    public override void Interpret(Context context)
+    {
+        Console.WriteLine("NonTerminalExpressionInterpreter");
+    }
+}
+
+
+var context = new Context();
+ICollection<AbstractExpression> expressions = new List<AbstractExpression>();
+
+expressions.Add(new TerminalExpression());
+expressions.Add(new TerminalExpression());
+expressions.Add(new NoneTerminalExpression());
+
+foreach (var expression in expressions)
+{
+    expression.Interpret(context);
+}
+```
 
 ## More
 

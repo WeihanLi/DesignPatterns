@@ -14,7 +14,7 @@ namespace InterpreterPattern
 
             expressions.Add(new TerminalExpression());
             expressions.Add(new TerminalExpression());
-            expressions.Add(new NoneTerminalExpresssion());
+            expressions.Add(new NoneTerminalExpression());
 
             foreach (var expression in expressions)
             {
