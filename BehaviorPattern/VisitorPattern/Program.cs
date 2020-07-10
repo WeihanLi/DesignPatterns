@@ -19,8 +19,8 @@ namespace VisitorPattern
             #endregion Prototype
 
             var personStructure = new PersonStructure();
-            personStructure.Attact(new Man());
-            personStructure.Attact(new Woman());
+            personStructure.Attach(new Man());
+            personStructure.Attach(new Woman());
 
             personStructure.Display(new Success());
             personStructure.Display(new Fail());

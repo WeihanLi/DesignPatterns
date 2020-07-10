@@ -6,14 +6,14 @@ namespace VisitorPattern
     {
         private readonly IList<Person> _persons = new List<Person>();
 
-        public void Attact(Person person)
+        public void Attach(Person person)
         {
             _persons.Add(person);
         }
 
         public void Detach(Person person)
         {
-            _persons.Add(person);
+            _persons.Remove(person);
         }
 
         public void Display(AbstractAction visitor)
