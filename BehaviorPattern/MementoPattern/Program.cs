@@ -33,7 +33,7 @@ namespace MementoPattern
             lixiaoyao.StateDisplay();
 
             //保存状态
-            var stateCaretasker = new RoleStateCarertaker
+            var stateCaretaker = new RoleStateCaretaker
             {
                 Memento = lixiaoyao.SaveState()
             };
@@ -43,7 +43,7 @@ namespace MementoPattern
             lixiaoyao.StateDisplay();
 
             // 快被 Boss 打挂了，恢复之前的状态，继续打
-            lixiaoyao.RecoveryState(stateCaretasker.Memento);
+            lixiaoyao.RecoveryState(stateCaretaker.Memento);
             lixiaoyao.StateDisplay();
 
             Console.ReadLine();
