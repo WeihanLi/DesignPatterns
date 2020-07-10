@@ -11,7 +11,7 @@ namespace BridgePattern
     {
         public override void Operation()
         {
-            Console.WriteLine("ImplementorA Opearation");
+            Console.WriteLine("ImplementorA Operation");
         }
     }
 
@@ -19,7 +19,7 @@ namespace BridgePattern
     {
         public override void Operation()
         {
-            Console.WriteLine("ImplementorB Opearation");
+            Console.WriteLine("ImplementorB Operation");
         }
     }
 
@@ -35,12 +35,12 @@ namespace BridgePattern
         public abstract void Operation();
     }
 
-    internal class RefindAbstraction : Abstraction
+    internal class RefinedAbstraction : Abstraction
     {
         public override void Operation()
         {
             Implementor.Operation();
-            Console.WriteLine("Invoke in RefindAbstraction");
+            Console.WriteLine("Invoke in RefinedAbstraction");
         }
     }
 }

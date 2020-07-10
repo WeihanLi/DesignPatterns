@@ -6,6 +6,20 @@ namespace BridgePattern
     {
         public static void Main(string[] args)
         {
+            #region Prototype
+
+            Abstraction ab = new RefinedAbstraction();
+
+            ab.SetImplementor(new ConcreteImplementorA());
+            ab.Operation();
+
+            ab.SetImplementor(new ConcreteImplementorB());
+            ab.Operation();
+
+            Console.WriteLine();
+
+            #endregion Prototype
+
             HandsetBrand handsetBrand = new HandsetBrandM();
             handsetBrand.SetHandsetSoft(new HandsetMp3());
             handsetBrand.Run();
