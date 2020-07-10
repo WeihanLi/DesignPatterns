@@ -2,7 +2,7 @@
 
 ## Intro 简介
 
-Design patterns from 《大话设计模式》 and some samples implemented by C# language.
+Design patterns from 《大话设计模式》 and some samples implemented by C#.
 
 《大话设计模式》 中设计模式总结，示例代码是以 C# 写的，基于 .NET Core 如果要自己编译请[下载安装](https://www.microsoft.com/net/download) .NET Core SDK
 
