@@ -2,7 +2,8 @@
 
 ## Intro
 
-> 中介者模式，用一个中介对象来封装一系列的对象交互。中介者使得各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变他们之间的交互。
+> 中介者模式，用一个中介对象来封装一系列的对象交互。
+> 中介者使得各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变他们之间的交互。
 
 ## 使用场景
 
@@ -19,6 +20,86 @@
 - 缺点
 
   > 由于 `ConcreteMediator` 控制了集中化，于是就把交互复杂性变为了中介者的复杂性，这就使得中介者会变得比任何一个 `ConcreteColleague` 都复杂
+
+
+## Sample
+
+``` csharp
+internal abstract class Mediator
+{
+    public abstract void Send(string message, Colleague colleague);
+}
+
+internal class ConcreteMediator : Mediator
+{
+    public Colleague Colleague1 { private get; set; }
+    public Colleague Colleague2 { private get; set; }
+
+    public override void Send(string message, Colleague colleague)
+    {
+        if (colleague == Colleague1)
+        {
+            Colleague2.Notify(message);
+        }
+        else
+        {
+            Colleague1.Notify(message);
+        }
+    }
+}
+
+internal abstract class Colleague
+{
+    protected Mediator Mediator;
+
+    protected Colleague(Mediator mediator) => Mediator = mediator;
+
+    public abstract void Notify(string message);
+}
+internal class ConcreteColleague1 : Colleague
+{
+    public ConcreteColleague1(Mediator mediator) : base(mediator)
+    {
+    }
+
+    public void Send(string message)
+    {
+        Mediator.Send(message, this);
+    }
+
+    public override void Notify(string message)
+    {
+        Console.WriteLine($"同事1 得到信息：{message}");
+    }
+}
+internal class ConcreteColleague2 : Colleague
+{
+    public ConcreteColleague2(Mediator mediator) : base(mediator)
+    {
+    }
+
+    public void Send(string message)
+    {
+        Mediator.Send(message, this);
+    }
+
+    public override void Notify(string message)
+    {
+        Console.WriteLine($"同事2 得到信息：{message}");
+    }
+}
+
+
+var mediator = new ConcreteMediator();
+
+var c1 = new ConcreteColleague1(mediator);
+var c2 = new ConcreteColleague2(mediator);
+mediator.Colleague1 = c1;
+mediator.Colleague2 = c2;
+
+c1.Send("吃饭了吗？");
+c2.Send("没有呢，你打算请客？");
+```
 
 ## More
 
