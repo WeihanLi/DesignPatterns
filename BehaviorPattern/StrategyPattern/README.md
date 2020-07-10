@@ -16,6 +16,51 @@
 - 策略模式的 Strategy 类层为 `Context` 定义了一系列的可供重用的算法或行为，继承有助于析取这些算法中的公共功能
 - 简化了单元测试，因为每个算法都有自己的类，可以通过自己的接口单独测试
 
+## Sample
+
+``` csharp
+public class Context
+{
+    private readonly Strategy _strategy;
+
+    public Context(Strategy strategy) => _strategy = strategy;
+
+    public void Implement()
+    {
+        _strategy.AlgorithmImplement();
+    }
+}
+
+public abstract class Strategy
+{
+    public abstract void AlgorithmImplement();
+}
+
+public class ConcreteStrategyA : Strategy
+{
+    public override void AlgorithmImplement()
+    {
+        Console.WriteLine("算法A实现");
+    }
+}
+
+public class ConcreteStrategyB : Strategy
+{
+    public override void AlgorithmImplement()
+    {
+        Console.WriteLine("算法B实现");
+    }
+}
+
+public class ConcreteStrategyC : Strategy
+{
+    public override void AlgorithmImplement()
+    {
+        Console.WriteLine("算法C实现");
+    }
+}
+```
+
 ## More
 
 更多设计模式及示例代码 [传送门](https://github.com/WeihanLi/DesignPatterns)
