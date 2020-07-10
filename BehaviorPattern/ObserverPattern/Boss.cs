@@ -7,7 +7,7 @@ namespace ObserverPattern
     {
         private readonly IList<Observer> _observers = new List<Observer>();
 
-        public void Attact(Observer observer)
+        public void Attach(Observer observer)
         {
             _observers.Add(observer);
         }

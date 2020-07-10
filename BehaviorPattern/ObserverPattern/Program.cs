@@ -11,8 +11,8 @@ namespace ObserverPattern
             var stockObserver = new StockObserver("魏关姹", boss);
             var nbaObserver = new NBAObserver("易管查", boss);
 
-            boss.Attact(stockObserver);
-            boss.Attact(nbaObserver);
+            boss.Attach(stockObserver);
+            boss.Attach(nbaObserver);
 
             boss.Detach(stockObserver);
 
@@ -21,7 +21,8 @@ namespace ObserverPattern
             boss.Notify();
             Console.WriteLine();
 
-            var newBoss = new NewBoss(); // 通过事件来通知的新老板
+            // 借助多播委托来实现，通过事件来通知的新老板
+            var newBoss = new NewBoss();
             var gameObserver = new GamePlayerObserver("西门", newBoss);
 
             // 注册通知事件
