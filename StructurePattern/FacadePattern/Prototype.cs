@@ -2,7 +2,7 @@
 
 namespace FacadePattern
 {
-    internal class SubSystem1
+    public class SubSystem1
     {
         public void MethodA()
         {
@@ -15,7 +15,7 @@ namespace FacadePattern
         }
     }
 
-    internal class SubSystem2
+    public class SubSystem2
     {
         public void MethodA()
         {
@@ -28,7 +28,7 @@ namespace FacadePattern
         }
     }
 
-    internal class SubSystem3
+    public class SubSystem3
     {
         public void MethodA()
         {
@@ -41,7 +41,7 @@ namespace FacadePattern
         }
     }
 
-    internal class Facade
+    public class Facade
     {
         private readonly SubSystem1 _subSystem1 = new SubSystem1();
         private readonly SubSystem2 _subSystem2 = new SubSystem2();
