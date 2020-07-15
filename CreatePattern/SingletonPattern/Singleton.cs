@@ -5,7 +5,7 @@
     /// </summary>
     public class Singleton
     {
-        private static volatile Singleton _instance;
+        private static Singleton _instance;
         private static readonly object SyncLock = new object();
 
         private Singleton()
