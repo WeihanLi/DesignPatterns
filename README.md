@@ -47,7 +47,7 @@ Design patterns from 《大话设计模式》 and some samples implemented by C#
 
 设计模式大体上可分为三类：
 
-- 创建型模式（Create）
+- [创建型模式（Create）](./CreatePattern)
     1. [简单工厂（SimpleFactory）](./CreatePattern/SimpleFactoryPattern)
     1. [抽象工厂（AbstractFactory）](./CreatePattern/AbstractFactoryPattern)
     1. [工厂方法（FactoryMethod）](./CreatePattern/FactoryMethodPattern)
@@ -55,7 +55,7 @@ Design patterns from 《大话设计模式》 and some samples implemented by C#
     1. [原型模式（Prototype）](./CreatePattern/PrototypePattern)
     1. [单例模式（Singleton）](./CreatePattern/SingletonPattern)
 
-- 结构型模式（Structure）
+- [结构型模式（Structure）](./StructurePattern)
     1. [适配器模式（Adapter）](./StructurePattern/AdapterPattern)
     1. [桥接模式（Bridge）](./StructurePattern/BridgePattern)
     1. [组合模式（Composite）](./StructurePattern/CompositePattern)
@@ -64,7 +64,7 @@ Design patterns from 《大话设计模式》 and some samples implemented by C#
     1. [享元模式（Flyweight）](./StructurePattern/FlyweightPattern)
     1. [代理模式（Proxy）](./StructurePattern/ProxyPattern)
 
-- 行为型模式（Behavior）
+- [行为型模式（Behavior）]](./BehaviorPattern)
     1. [观察者模式（Observer）](./BehaviorPattern/ObserverPattern)
     1. [模板方法（TemplateMethod）](./BehaviorPattern/TemplateMethodPattern)
     1. [命令模式（Command）](./BehaviorPattern/CommandPattern)

@@ -38,9 +38,9 @@
 
 ## Reference
 
-[简单工厂（SimpleFactory）](./SimpleFactoryPattern)
-[抽象工厂（AbstractFactory）](./AbstractFactoryPattern)
-[工厂方法（FactoryMethod）](./FactoryMethodPattern)
-[建造者模式（Builder）](./BuilderPattern)
-[原型模式（Prototype）](./PrototypePattern)
-[单例模式（Singleton）](./SingletonPattern)
+- [简单工厂（SimpleFactory）](./SimpleFactoryPattern)
+- [抽象工厂（AbstractFactory）](./AbstractFactoryPattern)
+- [工厂方法（FactoryMethod）](./FactoryMethodPattern)
+- [建造者模式（Builder）](./BuilderPattern)
+- [原型模式（Prototype）](./PrototypePattern)
+- [单例模式（Singleton）](./SingletonPattern)
