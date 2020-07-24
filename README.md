@@ -64,7 +64,7 @@ Design patterns from 《大话设计模式》 and some samples implemented by C#
     1. [享元模式（Flyweight）](./StructurePattern/FlyweightPattern)
     1. [代理模式（Proxy）](./StructurePattern/ProxyPattern)
 
-- [行为型模式（Behavior）]](./BehaviorPattern)
+- [行为型模式（Behavior）](./BehaviorPattern)
     1. [观察者模式（Observer）](./BehaviorPattern/ObserverPattern)
     1. [模板方法（TemplateMethod）](./BehaviorPattern/TemplateMethodPattern)
     1. [命令模式（Command）](./BehaviorPattern/CommandPattern)
