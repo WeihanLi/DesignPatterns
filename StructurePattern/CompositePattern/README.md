@@ -11,7 +11,7 @@
 ## Sample
 
 ``` csharp
-internal abstract class Component
+public abstract class Component
 {
     protected string Name;
 
@@ -27,7 +27,7 @@ internal abstract class Component
     public abstract void Display(int depth);
 }
 
-internal class Leaf : Component
+public class Leaf : Component
 {
     public Leaf(string name) : base(name)
     {
@@ -49,7 +49,7 @@ internal class Leaf : Component
     }
 }
 
-internal class Composite : Component
+public class Composite : Component
 {
     private readonly List<Component> _children = new List<Component>();
 
