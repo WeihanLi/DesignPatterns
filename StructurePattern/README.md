@@ -55,10 +55,10 @@
 ## Reference
 
 - <https://github.com/WeihanLi/DesignPatterns>
-- [适配器模式](./AdapterPattern.html)
-- [桥接模式](./BridgePattern.html)
-- [组合模式](./CompositePattern.html)
-- [装饰模式](./DecoratorPattern.html)
-- [外观/门面模式](./FacadePattern.html)
-- [享元模式](./FlyweightPattern.html)
-- [代理模式](./ProxyPattern.html)
+- [适配器模式](./AdapterPattern)
+- [桥接模式](./BridgePattern)
+- [组合模式](./CompositePattern)
+- [装饰模式](./DecoratorPattern)
+- [外观/门面模式](./FacadePattern)
+- [享元模式](./FlyweightPattern)
+- [代理模式](./ProxyPattern)
