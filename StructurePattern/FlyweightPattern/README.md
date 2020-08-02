@@ -9,12 +9,12 @@
 ## Sample
 
 ``` csharp
-internal abstract class Flyweight
+public abstract class Flyweight
 {
     public abstract void Operation(int extrinsicstate);
 }
 
-internal class ConcreteFlyweight : Flyweight
+public class ConcreteFlyweight : Flyweight
 {
     public override void Operation(int extrinsicstate)
     {
@@ -22,7 +22,7 @@ internal class ConcreteFlyweight : Flyweight
     }
 }
 
-internal class UnsharedFlyweight : Flyweight
+public class UnsharedFlyweight : Flyweight
 {
     public override void Operation(int extrinsicstate)
     {
@@ -30,7 +30,7 @@ internal class UnsharedFlyweight : Flyweight
     }
 }
 
-internal class FlyWeightFactory
+public class FlyWeightFactory
 {
     private readonly ConcurrentDictionary<string, Flyweight> _flyweights = new ConcurrentDictionary<string, Flyweight>();
 
