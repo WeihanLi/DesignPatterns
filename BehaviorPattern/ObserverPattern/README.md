@@ -18,13 +18,13 @@
 
 
 ``` csharp
-internal interface ISubject
+public interface ISubject
 {
     void Notify();
 
     string SubjectState { get; set; }
 }
-internal class Boss : ISubject
+public class Boss : ISubject
 {
     private readonly IList<Observer> _observers = new List<Observer>();
 
@@ -49,7 +49,7 @@ internal class Boss : ISubject
     public string SubjectState { get; set; }
 }
 
-internal abstract class Observer
+public abstract class Observer
 {
     protected string Name;
     protected ISubject Subject;
@@ -62,7 +62,7 @@ internal abstract class Observer
 
     public abstract void Update();
 }
-internal class StockObserver : Observer
+public class StockObserver : Observer
 {
     public StockObserver(string name, ISubject subject) : base(name, subject)
     {
@@ -73,7 +73,7 @@ internal class StockObserver : Observer
         Console.WriteLine($"{Name} {Subject.SubjectState} 关闭股票行情，继续工作");
     }
 }
-internal class NBAObserver : Observer
+public class NBAObserver : Observer
 {
     public NBAObserver(string name, ISubject subject) : base(name, subject)
     {
@@ -99,10 +99,10 @@ boss.SubjectState = "老板我胡汉三回来了";
 boss.Notify();
 ```
 
-借助 event 我们可以实现可以灵活的观察者模式，我们定义了一个新老版来演示事件的方式，来看下面的示例：
+借助 event（委托） 我们可以实现可以灵活的观察者模式，我们定义了一个新老板来演示事件的方式，来看下面的示例：
 
 ``` csharp
-internal class NewBoss : ISubject
+public class NewBoss : ISubject
 {
     public event Action Update;
 
@@ -114,7 +114,7 @@ internal class NewBoss : ISubject
     public string SubjectState { get; set; }
 }
 
-internal class GamePlayerObserver
+public class GamePlayerObserver
 {
     private readonly string _name;
     private readonly ISubject _subject;
@@ -147,7 +147,7 @@ newBoss.SubjectState = "老板我胡汉三回来了";
 newBoss.Notify();
 ```
 
-从上面这个示例可以看到，通过事件的方式，我们可以不要求显示继承于 `Observer` 这个抽象类，可以更加灵活，扩展性更强
+从上面这个示例可以看到，通过事件的方式，我们可以不要求显示继承于 `Observer` 这个抽象类，可以更加灵活，扩展性更强，这也是很多类库中会使用事件来扩展的重要原因
 
 ## More
 
