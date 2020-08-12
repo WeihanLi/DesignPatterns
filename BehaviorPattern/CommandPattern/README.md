@@ -20,7 +20,7 @@
 ## Sample
 
 ``` csharp
-internal class Receiver
+public class Receiver
 {
     public void Action()
     {
@@ -28,7 +28,7 @@ internal class Receiver
     }
 }
 
-internal abstract class Command
+public abstract class Command
 {
     protected readonly Receiver Receiver;
 
@@ -37,7 +37,7 @@ internal abstract class Command
 
     public abstract void Execute();
 }
-internal class ConcreteCommand : Command
+public class ConcreteCommand : Command
 {
     public ConcreteCommand(Receiver receiver) : base(receiver)
     {
@@ -49,7 +49,7 @@ internal class ConcreteCommand : Command
     }
 }
 
-internal class Invoker
+public class Invoker
 {
     private Command _command;
 
@@ -70,6 +70,20 @@ var command = new ConcreteCommand(receiver);
 var invoker = new Invoker();
 invoker.SetCommand(command);
 invoker.ExecuteCommand();
+
+// another sample
+var barbecuer = new Barbecuer();
+var waiter = new Waiter();
+
+waiter.SetOrder(new BakeChickenWingCommand(barbecuer));
+waiter.SetOrder(new BakeMuttonCommand(barbecuer));
+waiter.SetOrder(new BakeMuttonCommand(barbecuer));
+
+var willCancelOrder = new BakeMuttonCommand(barbecuer);
+waiter.SetOrder(willCancelOrder);
+waiter.CancelOrder(willCancelOrder);
+
+waiter.Notify();
 ```
 
 ## More

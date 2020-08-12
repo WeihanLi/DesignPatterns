@@ -25,12 +25,12 @@
 ## Sample
 
 ``` csharp
-internal abstract class Mediator
+public abstract class Mediator
 {
     public abstract void Send(string message, Colleague colleague);
 }
 
-internal class ConcreteMediator : Mediator
+public class ConcreteMediator : Mediator
 {
     public Colleague Colleague1 { private get; set; }
     public Colleague Colleague2 { private get; set; }
@@ -48,7 +48,7 @@ internal class ConcreteMediator : Mediator
     }
 }
 
-internal abstract class Colleague
+public abstract class Colleague
 {
     protected Mediator Mediator;
 
@@ -56,7 +56,7 @@ internal abstract class Colleague
 
     public abstract void Notify(string message);
 }
-internal class ConcreteColleague1 : Colleague
+public class ConcreteColleague1 : Colleague
 {
     public ConcreteColleague1(Mediator mediator) : base(mediator)
     {
@@ -72,7 +72,7 @@ internal class ConcreteColleague1 : Colleague
         Console.WriteLine($"同事1 得到信息：{message}");
     }
 }
-internal class ConcreteColleague2 : Colleague
+public class ConcreteColleague2 : Colleague
 {
     public ConcreteColleague2(Mediator mediator) : base(mediator)
     {
