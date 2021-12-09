@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <OutputType>Exe</OutputType>
 
     <LangVersion>latest</LangVersion>
@@ -12,8 +12,7 @@
     <Copyright>Copyright 2017-2021 (c) WeihanLi</Copyright>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" PrivateAssets="All" />
-    <PackageReference Include="WeihanLi.Common" Version="1.0.44" />
+    <PackageReference Include="WeihanLi.Common" Version="1.0.47" />
   </ItemGroup>
 </Project>
