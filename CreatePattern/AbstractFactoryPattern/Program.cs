@@ -1,43 +1,31 @@
-﻿using System;
-using Autofac;
+﻿#region AbstractFactory
 
-namespace AbstractFactoryPattern
-{
-    internal class Program
-    {
-        private static void Main(string[] args)
-        {
-            #region AbstractFactory
+IDbFactory factory = new AccessFactory();
+var userRepo = factory.CreateUserRepo();
+userRepo.Insert(null);
 
-            IDbFactory factory = new AccessFactory();
-            var userRepo = factory.CreateUserRepo();
-            userRepo.Insert(null);
+factory = new SqlServerFactory();
+userRepo = factory.CreateUserRepo();
+userRepo.Insert(null);
 
-            factory = new SqlServerFactory();
-            userRepo = factory.CreateUserRepo();
-            userRepo.Insert(null);
+#endregion AbstractFactory
 
-            #endregion AbstractFactory
+#region AbstractFactory + Reflection
 
-            #region AbstractFactory + Reflection
+var departmentRepo = DataAccess.CreateDepartmentRepo();
+departmentRepo.CreateDepartment(null);
 
-            var departmentRepo = DataAccess.CreateDepartmentRepo();
-            departmentRepo.CreateDepartment(null);
+#endregion AbstractFactory + Reflection
 
-            #endregion AbstractFactory + Reflection
+#region AbstractFactory + DependencyInjection
 
-            #region AbstractFactory + DependencyInjection
+using var services = new ServiceCollection()
+    .AddSingleton<IDbFactory, SqlServerFactory>()
+    .BuildServiceProvider();
 
-            var builder = new ContainerBuilder();
-            builder.RegisterType<SqlServerFactory>().As<IDbFactory>();
-            var container = builder.Build();
+var dbFactory = services.GetRequiredService<IDbFactory>();
+dbFactory.CreateDepartmentRepo().CreateDepartment(null);
 
-            var dbFactory = container.Resolve<IDbFactory>();
-            dbFactory.CreateDepartmentRepo().CreateDepartment(null);
+#endregion AbstractFactory + DependencyInjection
 
-            #endregion AbstractFactory + DependencyInjection
-
-            Console.ReadLine();
-        }
-    }
-}
+Console.ReadLine();

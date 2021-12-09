@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
 
     <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
 
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/WeihanLi/DesignPatterns</RepositoryUrl>
@@ -14,5 +15,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" PrivateAssets="All" />
     <PackageReference Include="WeihanLi.Common" Version="1.0.47" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="Microsoft.Extensions.DependencyInjection" />
   </ItemGroup>
 </Project>
