@@ -9,20 +9,12 @@ internal class CashContext
     public CashContext(string type)
     {
         StrategyType = type;
-        switch (type)
+        _cash = type switch
         {
-            case "满300返100":
-                _cash = new CashReturn(300, 100);
-                break;
-
-            case "8 折":
-                _cash = new CashRebate(0.8);
-                break;
-
-            default:
-                _cash = new CashNormal();
-                break;
-        }
+            "满300返100" => new CashReturn(300, 100),
+            "8 折" => new CashRebate(0.8),
+            _ => new CashNormal()
+        };
     }
 
     public double GetResult(double money)
