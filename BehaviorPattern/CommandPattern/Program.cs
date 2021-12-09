@@ -1,32 +1,24 @@
-﻿namespace CommandPattern;
+﻿#region Prototype
 
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        #region Prototype
+var receiver = new Receiver();
+var command = new ConcreteCommand(receiver);
+var invoker = new Invoker();
+invoker.SetCommand(command);
+invoker.ExecuteCommand();
 
-        var receiver = new Receiver();
-        var command = new ConcreteCommand(receiver);
-        var invoker = new Invoker();
-        invoker.SetCommand(command);
-        invoker.ExecuteCommand();
+#endregion Prototype
 
-        #endregion Prototype
+var barbecuer = new Barbecuer();
+var waiter = new Waiter();
 
-        var barbecuer = new Barbecuer();
-        var waiter = new Waiter();
+waiter.SetOrder(new BakeChickenWingCommand(barbecuer));
+waiter.SetOrder(new BakeMuttonCommand(barbecuer));
+waiter.SetOrder(new BakeMuttonCommand(barbecuer));
 
-        waiter.SetOrder(new BakeChickenWingCommand(barbecuer));
-        waiter.SetOrder(new BakeMuttonCommand(barbecuer));
-        waiter.SetOrder(new BakeMuttonCommand(barbecuer));
+var willCancelOrder = new BakeMuttonCommand(barbecuer);
+waiter.SetOrder(willCancelOrder);
+waiter.CancelOrder(willCancelOrder);
 
-        var willCancelOrder = new BakeMuttonCommand(barbecuer);
-        waiter.SetOrder(willCancelOrder);
-        waiter.CancelOrder(willCancelOrder);
+waiter.Notify();
 
-        waiter.Notify();
-
-        Console.ReadLine();
-    }
-}
+Console.ReadLine();

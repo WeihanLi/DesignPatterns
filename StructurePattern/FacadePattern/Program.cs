@@ -1,13 +1,5 @@
-﻿namespace FacadePattern;
+﻿var facade = new Facade();
+facade.MethodA();
+facade.MethodB();
 
-internal class Program
-{
-    public static void Main(string[] args)
-    {
-        var facade = new Facade();
-        facade.MethodA();
-        facade.MethodB();
-
-        Console.ReadLine();
-    }
-}
+Console.ReadLine();
