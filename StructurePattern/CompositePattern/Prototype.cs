@@ -40,7 +40,7 @@ internal class Leaf : Component
 
 internal class Composite : Component
 {
-    private readonly List<Component> _children = new List<Component>();
+    private readonly List<Component> _children = new();
 
     public Composite(string name) : base(name)
     {

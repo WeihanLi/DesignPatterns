@@ -8,7 +8,7 @@ public sealed class Singleton1
     /// <summary>
     /// 静态初始化，由 CLR 去创建
     /// </summary>
-    private static readonly Singleton1 Instance = new Singleton1();
+    private static readonly Singleton1 Instance = new();
 
     private Singleton1()
     {

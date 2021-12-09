@@ -6,7 +6,7 @@
 public class Singleton
 {
     private static Singleton _instance;
-    private static readonly object SyncLock = new object();
+    private static readonly object SyncLock = new();
 
     private Singleton()
     {

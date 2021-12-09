@@ -25,7 +25,7 @@ internal class UnsharedFlyweight : Flyweight
 
 internal class FlyWeightFactory
 {
-    private readonly ConcurrentDictionary<string, Flyweight> _flyweights = new ConcurrentDictionary<string, Flyweight>();
+    private readonly ConcurrentDictionary<string, Flyweight> _flyweights = new();
 
     public Flyweight GetFlyweight(string name) => _flyweights.GetOrAdd(name, n => new ConcreteFlyweight());
 }

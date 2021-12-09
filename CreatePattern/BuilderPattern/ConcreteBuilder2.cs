@@ -2,7 +2,7 @@
 
 internal class ConcreteBuilder2 : Builder
 {
-    private readonly Product _product = new Product();
+    private readonly Product _product = new();
 
     public override void BuildPartA() => _product.Add("PartX");
 

@@ -41,9 +41,9 @@ public class SubSystem3
 
 public class Facade
 {
-    private readonly SubSystem1 _subSystem1 = new SubSystem1();
-    private readonly SubSystem2 _subSystem2 = new SubSystem2();
-    private readonly SubSystem3 _subSystem3 = new SubSystem3();
+    private readonly SubSystem1 _subSystem1 = new();
+    private readonly SubSystem2 _subSystem2 = new();
+    private readonly SubSystem3 _subSystem3 = new();
 
     public void MethodA()
     {

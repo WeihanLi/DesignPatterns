@@ -20,7 +20,7 @@ internal abstract class Company
 
 internal class ConcreteCompany : Company
 {
-    private readonly List<Company> _children = new List<Company>();
+    private readonly List<Company> _children = new();
 
     public ConcreteCompany(string name) : base(name)
     {

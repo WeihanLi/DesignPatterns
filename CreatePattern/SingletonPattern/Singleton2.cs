@@ -8,7 +8,7 @@ namespace SingletonPattern;
 /// </summary>
 public class Singleton2
 {
-    private static readonly ConcurrentDictionary<int, Singleton2> Instances = new ConcurrentDictionary<int, Singleton2>();
+    private static readonly ConcurrentDictionary<int, Singleton2> Instances = new();
 
     private Singleton2()
     {

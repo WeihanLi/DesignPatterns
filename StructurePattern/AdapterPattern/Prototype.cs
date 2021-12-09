@@ -18,7 +18,7 @@ internal class Adaptee
 
 internal class TargetAdapter : Target
 {
-    private readonly Adaptee _adaptee = new Adaptee();
+    private readonly Adaptee _adaptee = new();
 
     public override void Request()
     {

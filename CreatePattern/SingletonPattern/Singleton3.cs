@@ -6,8 +6,7 @@
 public class Singleton3
 {
     private static readonly Lazy<Singleton3>
-        LazyInstance = new Lazy<Singleton3>
-            (() => new Singleton3());
+        LazyInstance = new(() => new Singleton3());
 
     private Singleton3()
     {
