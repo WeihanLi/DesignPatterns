@@ -1,7 +1,6 @@
-﻿namespace InterpreterPattern
+﻿namespace InterpreterPattern;
+
+internal class PlayContext
 {
-    internal class PlayContext
-    {
-        public string PlayText { get; set; }
-    }
+    public string PlayText { get; set; }
 }

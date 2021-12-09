@@ -1,43 +1,40 @@
-﻿using System;
+﻿namespace ProxyPattern;
 
-namespace ProxyPattern
+internal abstract class Subject
 {
-    internal abstract class Subject
+    public abstract void Request();
+}
+
+internal class RealSubject : Subject
+{
+    public override void Request()
     {
-        public abstract void Request();
+        Console.WriteLine("request from real subject");
     }
+}
 
-    internal class RealSubject : Subject
+internal class Proxy0 : Subject
+{
+    private Subject _subject;
+
+    public override void Request()
     {
-        public override void Request()
+        if (null == _subject)
         {
-            Console.WriteLine("request from real subject");
+            _subject = new RealSubject();
         }
+        _subject.Request();
     }
+}
 
-    internal class Proxy0 : Subject
+internal class Proxy : Subject
+{
+    private readonly Subject _subject;
+
+    public Proxy(Subject subject) => _subject = subject;
+
+    public override void Request()
     {
-        private Subject _subject;
-
-        public override void Request()
-        {
-            if (null == _subject)
-            {
-                _subject = new RealSubject();
-            }
-            _subject.Request();
-        }
-    }
-
-    internal class Proxy : Subject
-    {
-        private readonly Subject _subject;
-
-        public Proxy(Subject subject) => _subject = subject;
-
-        public override void Request()
-        {
-            _subject.Request();
-        }
+        _subject.Request();
     }
 }

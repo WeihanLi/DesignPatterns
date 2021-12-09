@@ -1,29 +1,26 @@
-﻿using System;
+﻿namespace TemplateMethodPattern;
 
-namespace TemplateMethodPattern
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            #region Prototype
+        #region Prototype
 
-            AbstractClass c = new ConcreteClassA();
-            c.TemplateMethod();
-            c = new ConcreteClassB();
-            c.TemplateMethod();
+        AbstractClass c = new ConcreteClassA();
+        c.TemplateMethod();
+        c = new ConcreteClassB();
+        c.TemplateMethod();
 
-            Console.WriteLine();
+        Console.WriteLine();
 
-            #endregion Prototype
+        #endregion Prototype
 
-            var paper1 = new TestPaperA();
-            paper1.TestResult();
+        var paper1 = new TestPaperA();
+        paper1.TestResult();
 
-            var pager2 = new TestPaperB();
-            pager2.TestResult();
+        var pager2 = new TestPaperB();
+        pager2.TestResult();
 
-            Console.ReadLine();
-        }
+        Console.ReadLine();
     }
 }

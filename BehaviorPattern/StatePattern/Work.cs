@@ -1,26 +1,25 @@
-﻿namespace StatePattern
+﻿namespace StatePattern;
+
+internal class Work
 {
-    internal class Work
+    private WorkState _currentState;
+
+    public Work()
     {
-        private WorkState _currentState;
+        _currentState = new ForenoonState();
+    }
 
-        public Work()
-        {
-            _currentState = new ForenoonState();
-        }
+    public int Hour { get; set; }
 
-        public int Hour { get; set; }
+    public bool TaskFinished { get; set; }
 
-        public bool TaskFinished { get; set; }
+    public void SetState(WorkState workState)
+    {
+        _currentState = workState;
+    }
 
-        public void SetState(WorkState workState)
-        {
-            _currentState = workState;
-        }
-
-        public void WriteProgram()
-        {
-            _currentState.WriteProgram(this);
-        }
+    public void WriteProgram()
+    {
+        _currentState.WriteProgram(this);
     }
 }

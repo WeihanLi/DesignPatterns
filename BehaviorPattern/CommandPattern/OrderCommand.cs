@@ -1,41 +1,38 @@
-﻿using System;
+﻿namespace CommandPattern;
 
-namespace CommandPattern
+public abstract class OrderCommand
 {
-    public abstract class OrderCommand
+    protected Barbecuer Receiver;
+
+    protected OrderCommand(Barbecuer receiver) => Receiver = receiver ?? throw new ArgumentNullException(nameof(receiver));
+
+    public abstract void ExecuteCommand();
+}
+
+internal class BakeMuttonCommand : OrderCommand
+{
+    public BakeMuttonCommand(Barbecuer receiver) : base(receiver)
     {
-        protected Barbecuer Receiver;
-
-        protected OrderCommand(Barbecuer receiver) => Receiver = receiver ?? throw new ArgumentNullException(nameof(receiver));
-
-        public abstract void ExecuteCommand();
     }
 
-    internal class BakeMuttonCommand : OrderCommand
+    public override void ExecuteCommand()
     {
-        public BakeMuttonCommand(Barbecuer receiver) : base(receiver)
-        {
-        }
-
-        public override void ExecuteCommand()
-        {
-            Receiver.BakeMutton();
-        }
-
-        public override string ToString() => nameof(BakeMuttonCommand);
+        Receiver.BakeMutton();
     }
 
-    internal class BakeChickenWingCommand : OrderCommand
+    public override string ToString() => nameof(BakeMuttonCommand);
+}
+
+internal class BakeChickenWingCommand : OrderCommand
+{
+    public BakeChickenWingCommand(Barbecuer receiver) : base(receiver)
     {
-        public BakeChickenWingCommand(Barbecuer receiver) : base(receiver)
-        {
-        }
-
-        public override void ExecuteCommand()
-        {
-            Receiver.BakeChickenWing();
-        }
-
-        public override string ToString() => nameof(BakeChickenWingCommand);
     }
+
+    public override void ExecuteCommand()
+    {
+        Receiver.BakeChickenWing();
+    }
+
+    public override string ToString() => nameof(BakeChickenWingCommand);
 }

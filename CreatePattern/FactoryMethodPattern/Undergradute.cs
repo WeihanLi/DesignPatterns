@@ -1,6 +1,5 @@
-﻿namespace FactoryMethodPattern
+﻿namespace FactoryMethodPattern;
+
+internal class Undergradute : Leifeng
 {
-    internal class Undergradute : Leifeng
-    {
-    }
 }

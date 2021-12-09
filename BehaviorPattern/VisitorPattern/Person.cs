@@ -1,23 +1,22 @@
-﻿namespace VisitorPattern
+﻿namespace VisitorPattern;
+
+internal abstract class Person
 {
-    internal abstract class Person
-    {
-        public abstract void Accept(AbstractAction visitor);
-    }
+    public abstract void Accept(AbstractAction visitor);
+}
 
-    internal class Man : Person
+internal class Man : Person
+{
+    public override void Accept(AbstractAction visitor)
     {
-        public override void Accept(AbstractAction visitor)
-        {
-            visitor.GetManConclusion(this);
-        }
+        visitor.GetManConclusion(this);
     }
+}
 
-    internal class Woman : Person
+internal class Woman : Person
+{
+    public override void Accept(AbstractAction visitor)
     {
-        public override void Accept(AbstractAction visitor)
-        {
-            visitor.GetWomanConclusion(this);
-        }
+        visitor.GetWomanConclusion(this);
     }
 }

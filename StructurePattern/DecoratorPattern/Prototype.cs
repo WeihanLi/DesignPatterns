@@ -1,59 +1,56 @@
-﻿using System;
+﻿namespace DecoratorPattern;
 
-namespace DecoratorPattern
+internal abstract class Component
 {
-    internal abstract class Component
+    public abstract void Operation();
+}
+
+internal class ConcreteComponent : Component
+{
+    public override void Operation()
     {
-        public abstract void Operation();
+        Console.WriteLine("Operation executed in ConcreteComponent");
+    }
+}
+
+internal abstract class Decorator : Component
+{
+    protected Component Component;
+
+    public void SetComponent(Component component)
+    {
+        Component = component;
     }
 
-    internal class ConcreteComponent : Component
+    public override void Operation()
     {
-        public override void Operation()
-        {
-            Console.WriteLine("Operation executed in ConcreteComponent");
-        }
+        Component?.Operation();
+    }
+}
+
+internal class DecoratorA : Decorator
+{
+    private string _state;
+
+    public override void Operation()
+    {
+        base.Operation();
+        _state = "executed";
+        Console.WriteLine($"operation in DecoratorA, state:{_state}");
+    }
+}
+
+internal class DecoratorB : Decorator
+{
+    public override void Operation()
+    {
+        base.Operation();
+        Console.WriteLine("operation in DecoratorB");
+        AddBehavior();
     }
 
-    internal abstract class Decorator : Component
+    private void AddBehavior()
     {
-        protected Component Component;
-
-        public void SetComponent(Component component)
-        {
-            Component = component;
-        }
-
-        public override void Operation()
-        {
-            Component?.Operation();
-        }
-    }
-
-    internal class DecoratorA : Decorator
-    {
-        private string _state;
-
-        public override void Operation()
-        {
-            base.Operation();
-            _state = "executed";
-            Console.WriteLine($"operation in DecoratorA, state:{_state}");
-        }
-    }
-
-    internal class DecoratorB : Decorator
-    {
-        public override void Operation()
-        {
-            base.Operation();
-            Console.WriteLine("operation in DecoratorB");
-            AddBehavior();
-        }
-
-        private void AddBehavior()
-        {
-            Console.WriteLine("another behavior");
-        }
+        Console.WriteLine("another behavior");
     }
 }

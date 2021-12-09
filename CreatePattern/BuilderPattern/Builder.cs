@@ -1,11 +1,10 @@
-﻿namespace BuilderPattern
+﻿namespace BuilderPattern;
+
+internal abstract class Builder
 {
-    internal abstract class Builder
-    {
-        public abstract void BuildPartA();
+    public abstract void BuildPartA();
 
-        public abstract void BuildPartB();
+    public abstract void BuildPartB();
 
-        public abstract Product GetResult();
-    }
+    public abstract Product GetResult();
 }

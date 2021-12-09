@@ -1,6 +1,5 @@
-﻿namespace FactoryMethodPattern
+﻿namespace FactoryMethodPattern;
+
+internal class Volunteer : Leifeng
 {
-    internal class Volunteer : Leifeng
-    {
-    }
 }

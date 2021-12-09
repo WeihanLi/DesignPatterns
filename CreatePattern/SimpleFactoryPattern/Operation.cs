@@ -1,51 +1,48 @@
-﻿using System;
+﻿namespace SimpleFactoryPattern;
 
-namespace SimpleFactoryPattern
+public class Operation
 {
-    public class Operation
-    {
-        public double NumberA { get; set; }
-        public double NumberB { get; set; }
+    public double NumberA { get; set; }
+    public double NumberB { get; set; }
 
-        public virtual double GetResult()
-        {
-            return 0;
-        }
+    public virtual double GetResult()
+    {
+        return 0;
     }
+}
 
-    public class OperationAdd : Operation
+public class OperationAdd : Operation
+{
+    public override double GetResult()
     {
-        public override double GetResult()
-        {
-            return NumberA + NumberB;
-        }
+        return NumberA + NumberB;
     }
+}
 
-    public class OpertaionSub : Operation
+public class OpertaionSub : Operation
+{
+    public override double GetResult()
     {
-        public override double GetResult()
-        {
-            return NumberA - NumberB;
-        }
+        return NumberA - NumberB;
     }
+}
 
-    public class OperationMul : Operation
+public class OperationMul : Operation
+{
+    public override double GetResult()
     {
-        public override double GetResult()
-        {
-            return NumberA * NumberB;
-        }
+        return NumberA * NumberB;
     }
+}
 
-    public class OperationDiv : Operation
+public class OperationDiv : Operation
+{
+    public override double GetResult()
     {
-        public override double GetResult()
+        if (NumberB == 0)
         {
-            if (NumberB == 0)
-            {
-                throw new Exception("除数不能为0");
-            }
-            return NumberA / NumberB;
+            throw new Exception("除数不能为0");
         }
+        return NumberA / NumberB;
     }
 }

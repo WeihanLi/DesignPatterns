@@ -1,39 +1,36 @@
-﻿using System;
+﻿namespace AbstractFactoryPattern;
 
-namespace AbstractFactoryPattern
+public interface IUserRepo
 {
-    public interface IUserRepo
-    {
-        void Insert(User user);
+    void Insert(User user);
 
-        User GetUser(int userId);
+    User GetUser(int userId);
+}
+
+internal class SqlServerUserRepo : IUserRepo
+{
+    public void Insert(User user)
+    {
+        Console.WriteLine("insert user in SqlServer");
     }
 
-    internal class SqlServerUserRepo : IUserRepo
+    public User GetUser(int userId)
     {
-        public void Insert(User user)
-        {
-            Console.WriteLine("insert user in SqlServer");
-        }
+        Console.WriteLine("Get user from SqlServer by userId");
+        return null;
+    }
+}
 
-        public User GetUser(int userId)
-        {
-            Console.WriteLine("Get user from SqlServer by userId");
-            return null;
-        }
+internal class AccessUserRepo : IUserRepo
+{
+    public void Insert(User user)
+    {
+        Console.WriteLine("insert user in Access");
     }
 
-    internal class AccessUserRepo : IUserRepo
+    public User GetUser(int userId)
     {
-        public void Insert(User user)
-        {
-            Console.WriteLine("insert user in Access");
-        }
-
-        public User GetUser(int userId)
-        {
-            Console.WriteLine("Get user from Access by userId");
-            return null;
-        }
+        Console.WriteLine("Get user from Access by userId");
+        return null;
     }
 }

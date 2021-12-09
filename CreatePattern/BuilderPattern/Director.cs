@@ -1,11 +1,10 @@
-﻿namespace BuilderPattern
+﻿namespace BuilderPattern;
+
+internal class Director
 {
-    internal class Director
+    public void Construct(Builder builder)
     {
-        public void Construct(Builder builder)
-        {
-            builder.BuildPartA();
-            builder.BuildPartB();
-        }
+        builder.BuildPartA();
+        builder.BuildPartB();
     }
 }

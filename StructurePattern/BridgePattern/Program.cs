@@ -1,36 +1,33 @@
-﻿using System;
+﻿namespace BridgePattern;
 
-namespace BridgePattern
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            #region Prototype
+        #region Prototype
 
-            Abstraction ab = new RefinedAbstraction();
+        Abstraction ab = new RefinedAbstraction();
 
-            ab.SetImplementor(new ConcreteImplementorA());
-            ab.Operation();
+        ab.SetImplementor(new ConcreteImplementorA());
+        ab.Operation();
 
-            ab.SetImplementor(new ConcreteImplementorB());
-            ab.Operation();
+        ab.SetImplementor(new ConcreteImplementorB());
+        ab.Operation();
 
-            Console.WriteLine();
+        Console.WriteLine();
 
-            #endregion Prototype
+        #endregion Prototype
 
-            HandsetBrand handsetBrand = new HandsetBrandM();
-            handsetBrand.SetHandsetSoft(new HandsetMp3());
-            handsetBrand.Run();
-            handsetBrand.SetHandsetSoft(new HandsetGame());
-            handsetBrand.Run();
+        HandsetBrand handsetBrand = new HandsetBrandM();
+        handsetBrand.SetHandsetSoft(new HandsetMp3());
+        handsetBrand.Run();
+        handsetBrand.SetHandsetSoft(new HandsetGame());
+        handsetBrand.Run();
 
-            handsetBrand = new HandsetBrandN();
-            handsetBrand.SetHandsetSoft(new HandsetAddressList());
-            handsetBrand.Run();
+        handsetBrand = new HandsetBrandN();
+        handsetBrand.SetHandsetSoft(new HandsetAddressList());
+        handsetBrand.Run();
 
-            Console.ReadLine();
-        }
+        Console.ReadLine();
     }
 }

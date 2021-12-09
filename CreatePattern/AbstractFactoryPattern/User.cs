@@ -1,6 +1,5 @@
-﻿namespace AbstractFactoryPattern
+﻿namespace AbstractFactoryPattern;
+
+public class User
 {
-    public class User
-    {
-    }
 }

@@ -17,5 +17,6 @@
   </ItemGroup>
   <ItemGroup>
     <Using Include="Microsoft.Extensions.DependencyInjection" />
+    <Using Include="WeihanLi.Extensions" />
   </ItemGroup>
 </Project>

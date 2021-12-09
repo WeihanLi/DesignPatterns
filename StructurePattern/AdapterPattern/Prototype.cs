@@ -1,30 +1,27 @@
-﻿using System;
+﻿namespace AdapterPattern;
 
-namespace AdapterPattern
+internal class Target
 {
-    internal class Target
+    public virtual void Request()
     {
-        public virtual void Request()
-        {
-            Console.WriteLine("This is a common request");
-        }
+        Console.WriteLine("This is a common request");
     }
+}
 
-    internal class Adaptee
+internal class Adaptee
+{
+    public void SpecialRequest()
     {
-        public void SpecialRequest()
-        {
-            Console.WriteLine("this is a special request");
-        }
+        Console.WriteLine("this is a special request");
     }
+}
 
-    internal class TargetAdapter : Target
+internal class TargetAdapter : Target
+{
+    private readonly Adaptee _adaptee = new Adaptee();
+
+    public override void Request()
     {
-        private readonly Adaptee _adaptee = new Adaptee();
-
-        public override void Request()
-        {
-            _adaptee.SpecialRequest();
-        }
+        _adaptee.SpecialRequest();
     }
 }

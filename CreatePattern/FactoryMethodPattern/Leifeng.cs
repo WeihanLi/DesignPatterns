@@ -1,22 +1,19 @@
-﻿using System;
+﻿namespace FactoryMethodPattern;
 
-namespace FactoryMethodPattern
+internal class Leifeng
 {
-    internal class Leifeng
+    public void Sweep()
     {
-        public void Sweep()
-        {
-            Console.WriteLine("扫地");
-        }
+        Console.WriteLine("扫地");
+    }
 
-        public void Wash()
-        {
-            Console.WriteLine("洗衣");
-        }
+    public void Wash()
+    {
+        Console.WriteLine("洗衣");
+    }
 
-        public void BuyRice()
-        {
-            Console.WriteLine("买米");
-        }
+    public void BuyRice()
+    {
+        Console.WriteLine("买米");
     }
 }

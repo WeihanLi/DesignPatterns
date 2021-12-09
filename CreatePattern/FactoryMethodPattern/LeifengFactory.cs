@@ -1,23 +1,22 @@
-﻿namespace FactoryMethodPattern
+﻿namespace FactoryMethodPattern;
+
+internal interface ILeifengFactory
 {
-    internal interface ILeifengFactory
-    {
-        Leifeng CreateLeifeng();
-    }
+    Leifeng CreateLeifeng();
+}
 
-    internal class UndergraduteFactory : ILeifengFactory
+internal class UndergraduteFactory : ILeifengFactory
+{
+    public Leifeng CreateLeifeng()
     {
-        public Leifeng CreateLeifeng()
-        {
-            return new Undergradute();
-        }
+        return new Undergradute();
     }
+}
 
-    internal class VolunteerFactory : ILeifengFactory
+internal class VolunteerFactory : ILeifengFactory
+{
+    public Leifeng CreateLeifeng()
     {
-        public Leifeng CreateLeifeng()
-        {
-            return new Volunteer();
-        }
+        return new Volunteer();
     }
 }

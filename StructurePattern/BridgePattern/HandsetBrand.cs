@@ -1,34 +1,31 @@
-﻿using System;
+﻿namespace BridgePattern;
 
-namespace BridgePattern
+internal abstract class HandsetBrand
 {
-    internal abstract class HandsetBrand
+    protected HandsetSoft Soft;
+
+    public void SetHandsetSoft(HandsetSoft soft)
     {
-        protected HandsetSoft Soft;
-
-        public void SetHandsetSoft(HandsetSoft soft)
-        {
-            Soft = soft;
-        }
-
-        public abstract void Run();
+        Soft = soft;
     }
 
-    internal class HandsetBrandM : HandsetBrand
-    {
-        public override void Run()
-        {
-            Soft.Run();
-            Console.WriteLine("running in brand M");
-        }
-    }
+    public abstract void Run();
+}
 
-    internal class HandsetBrandN : HandsetBrand
+internal class HandsetBrandM : HandsetBrand
+{
+    public override void Run()
     {
-        public override void Run()
-        {
-            Soft.Run();
-            Console.WriteLine("running in brand N");
-        }
+        Soft.Run();
+        Console.WriteLine("running in brand M");
+    }
+}
+
+internal class HandsetBrandN : HandsetBrand
+{
+    public override void Run()
+    {
+        Soft.Run();
+        Console.WriteLine("running in brand N");
     }
 }

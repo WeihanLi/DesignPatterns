@@ -1,31 +1,28 @@
-﻿using System;
+﻿namespace InterpreterPattern;
 
-namespace InterpreterPattern
+internal class Context
 {
-    internal class Context
-    {
-        public string Input { get; set; }
-        public string Output { get; set; }
-    }
+    public string Input { get; set; }
+    public string Output { get; set; }
+}
 
-    internal abstract class AbstractExpression
-    {
-        public abstract void Interpret(Context context);
-    }
+internal abstract class AbstractExpression
+{
+    public abstract void Interpret(Context context);
+}
 
-    internal class TerminalExpression : AbstractExpression
+internal class TerminalExpression : AbstractExpression
+{
+    public override void Interpret(Context context)
     {
-        public override void Interpret(Context context)
-        {
-            Console.WriteLine("TerminalExpressionInterpreter");
-        }
+        Console.WriteLine("TerminalExpressionInterpreter");
     }
+}
 
-    internal class NoneTerminalExpression : AbstractExpression
+internal class NoneTerminalExpression : AbstractExpression
+{
+    public override void Interpret(Context context)
     {
-        public override void Interpret(Context context)
-        {
-            Console.WriteLine("NonTerminalExpressionInterpreter");
-        }
+        Console.WriteLine("NonTerminalExpressionInterpreter");
     }
 }

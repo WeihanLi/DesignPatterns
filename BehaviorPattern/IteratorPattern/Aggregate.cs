@@ -1,31 +1,28 @@
-﻿using System.Collections.Generic;
+﻿namespace IteratorPattern;
 
-namespace IteratorPattern
+internal abstract class Aggregate
 {
-    internal abstract class Aggregate
+    /// <summary>
+    /// 创建迭代器
+    /// </summary>
+    /// <returns></returns>
+    public abstract Iterator CreateIterator();
+}
+
+internal class ConcreteAggregate : Aggregate
+{
+    private readonly IList<object> _items = new List<object>();
+
+    public override Iterator CreateIterator()
     {
-        /// <summary>
-        /// 创建迭代器
-        /// </summary>
-        /// <returns></returns>
-        public abstract Iterator CreateIterator();
+        return new ConcreteIterator(this);
     }
 
-    internal class ConcreteAggregate : Aggregate
+    public int TotalCount => _items.Count;
+
+    public object this[int index]
     {
-        private readonly IList<object> _items = new List<object>();
-
-        public override Iterator CreateIterator()
-        {
-            return new ConcreteIterator(this);
-        }
-
-        public int TotalCount => _items.Count;
-
-        public object this[int index]
-        {
-            get => _items[index];
-            set => _items.Insert(index, value);
-        }
+        get => _items[index];
+        set => _items.Insert(index, value);
     }
 }

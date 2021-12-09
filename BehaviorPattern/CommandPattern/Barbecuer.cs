@@ -1,17 +1,14 @@
-﻿using System;
+﻿namespace CommandPattern;
 
-namespace CommandPattern
+public class Barbecuer
 {
-    public class Barbecuer
+    public void BakeMutton()
     {
-        public void BakeMutton()
-        {
-            Console.WriteLine("烤羊肉串");
-        }
+        Console.WriteLine("烤羊肉串");
+    }
 
-        public void BakeChickenWing()
-        {
-            Console.WriteLine("烤鸡翅");
-        }
+    public void BakeChickenWing()
+    {
+        Console.WriteLine("烤鸡翅");
     }
 }

@@ -1,98 +1,94 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace VisitorPattern;
 
-namespace VisitorPattern
+#region Element
+
+internal abstract class Element
 {
-    #region Element
+    public abstract void Accept(Visitor visitor);
+}
 
-    internal abstract class Element
+internal class ConcreteElementA : Element
+{
+    public override void Accept(Visitor visitor)
     {
-        public abstract void Accept(Visitor visitor);
+        visitor.VisitConcreteElementA(this);
     }
 
-    internal class ConcreteElementA : Element
+    public void OperationA()
     {
-        public override void Accept(Visitor visitor)
-        {
-            visitor.VisitConcreteElementA(this);
-        }
+    }
+}
 
-        public void OperationA()
-        {
-        }
+internal class ConcreteElementB : Element
+{
+    public override void Accept(Visitor visitor)
+    {
+        visitor.VisitConcreteElementB(this);
     }
 
-    internal class ConcreteElementB : Element
+    public void OperationB()
     {
-        public override void Accept(Visitor visitor)
-        {
-            visitor.VisitConcreteElementB(this);
-        }
+    }
+}
 
-        public void OperationB()
-        {
-        }
+#endregion Element
+
+#region Visitor
+
+internal abstract class Visitor
+{
+    public abstract void VisitConcreteElementA(ConcreteElementA element);
+
+    public abstract void VisitConcreteElementB(ConcreteElementB element);
+}
+
+internal class ConcreteVisitor1 : Visitor
+{
+    public override void VisitConcreteElementA(ConcreteElementA element)
+    {
+        Console.WriteLine($"{element.GetType().Name} 被 {GetType().Name} 访问");
     }
 
-    #endregion Element
-
-    #region Visitor
-
-    internal abstract class Visitor
+    public override void VisitConcreteElementB(ConcreteElementB element)
     {
-        public abstract void VisitConcreteElementA(ConcreteElementA element);
+        Console.WriteLine($"{element.GetType().Name} 被 {GetType().Name} 访问");
+    }
+}
 
-        public abstract void VisitConcreteElementB(ConcreteElementB element);
+internal class ConcreteVisitor2 : Visitor
+{
+    public override void VisitConcreteElementA(ConcreteElementA element)
+    {
+        Console.WriteLine($"{element.GetType().Name} 被 {GetType().Name} 访问");
     }
 
-    internal class ConcreteVisitor1 : Visitor
+    public override void VisitConcreteElementB(ConcreteElementB element)
     {
-        public override void VisitConcreteElementA(ConcreteElementA element)
-        {
-            Console.WriteLine($"{element.GetType().Name} 被 {GetType().Name} 访问");
-        }
+        Console.WriteLine($"{element.GetType().Name} 被 {GetType().Name} 访问");
+    }
+}
 
-        public override void VisitConcreteElementB(ConcreteElementB element)
-        {
-            Console.WriteLine($"{element.GetType().Name} 被 {GetType().Name} 访问");
-        }
+#endregion Visitor
+
+internal class ObjectStructure
+{
+    private readonly IList<Element> _elements = new List<Element>();
+
+    public void Attach(Element element)
+    {
+        _elements.Add(element);
     }
 
-    internal class ConcreteVisitor2 : Visitor
+    public void Detach(Element element)
     {
-        public override void VisitConcreteElementA(ConcreteElementA element)
-        {
-            Console.WriteLine($"{element.GetType().Name} 被 {GetType().Name} 访问");
-        }
-
-        public override void VisitConcreteElementB(ConcreteElementB element)
-        {
-            Console.WriteLine($"{element.GetType().Name} 被 {GetType().Name} 访问");
-        }
+        _elements.Remove(element);
     }
 
-    #endregion Visitor
-
-    internal class ObjectStructure
+    public void Accept(Visitor visitor)
     {
-        private readonly IList<Element> _elements = new List<Element>();
-
-        public void Attach(Element element)
+        foreach (var element in _elements)
         {
-            _elements.Add(element);
-        }
-
-        public void Detach(Element element)
-        {
-            _elements.Remove(element);
-        }
-
-        public void Accept(Visitor visitor)
-        {
-            foreach (var element in _elements)
-            {
-                element.Accept(visitor);
-            }
+            element.Accept(visitor);
         }
     }
 }

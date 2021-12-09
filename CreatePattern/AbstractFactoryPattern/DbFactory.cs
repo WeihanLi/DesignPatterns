@@ -1,35 +1,34 @@
-﻿namespace AbstractFactoryPattern
+﻿namespace AbstractFactoryPattern;
+
+public interface IDbFactory
 {
-    public interface IDbFactory
-    {
-        IUserRepo CreateUserRepo();
+    IUserRepo CreateUserRepo();
 
-        IDepartmentRepo CreateDepartmentRepo();
+    IDepartmentRepo CreateDepartmentRepo();
+}
+
+internal class SqlServerFactory : IDbFactory
+{
+    public IUserRepo CreateUserRepo()
+    {
+        return new SqlServerUserRepo();
     }
 
-    internal class SqlServerFactory : IDbFactory
+    public IDepartmentRepo CreateDepartmentRepo()
     {
-        public IUserRepo CreateUserRepo()
-        {
-            return new SqlServerUserRepo();
-        }
+        return new SqlServerDepartmentRepo();
+    }
+}
 
-        public IDepartmentRepo CreateDepartmentRepo()
-        {
-            return new SqlServerDepartmentRepo();
-        }
+internal class AccessFactory : IDbFactory
+{
+    public IUserRepo CreateUserRepo()
+    {
+        return new AccessUserRepo();
     }
 
-    internal class AccessFactory : IDbFactory
+    public IDepartmentRepo CreateDepartmentRepo()
     {
-        public IUserRepo CreateUserRepo()
-        {
-            return new AccessUserRepo();
-        }
-
-        public IDepartmentRepo CreateDepartmentRepo()
-        {
-            return new AccessDepartmentRepo();
-        }
+        return new AccessDepartmentRepo();
     }
 }

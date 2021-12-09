@@ -1,16 +1,13 @@
-﻿using System;
+﻿namespace FacadePattern;
 
-namespace FacadePattern
+internal class Program
 {
-    internal class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            var facade = new Facade();
-            facade.MethodA();
-            facade.MethodB();
+        var facade = new Facade();
+        facade.MethodA();
+        facade.MethodB();
 
-            Console.ReadLine();
-        }
+        Console.ReadLine();
     }
 }

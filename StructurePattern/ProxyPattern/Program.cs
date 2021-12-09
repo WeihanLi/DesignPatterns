@@ -1,18 +1,15 @@
-﻿using System;
+﻿namespace ProxyPattern;
 
-namespace ProxyPattern
+internal class Program
 {
-    internal class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            Subject proxy = new Proxy(new RealSubject());
-            proxy.Request();
+        Subject proxy = new Proxy(new RealSubject());
+        proxy.Request();
 
-            proxy = new Proxy0();
-            proxy.Request();
+        proxy = new Proxy0();
+        proxy.Request();
 
-            Console.ReadLine();
-        }
+        Console.ReadLine();
     }
 }

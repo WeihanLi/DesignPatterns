@@ -1,56 +1,53 @@
-﻿using System;
+﻿namespace DecoratorPattern;
 
-namespace DecoratorPattern
+internal class Person
 {
-    internal class Person
+    protected readonly string Name;
+
+    public Person()
     {
-        protected readonly string Name;
-
-        public Person()
-        {
-        }
-
-        public Person(string name)
-        {
-            Name = name;
-        }
-
-        public virtual void Show()
-        {
-            Console.WriteLine($"装扮的{Name}");
-        }
     }
 
-    internal class Finery : Person
+    public Person(string name)
     {
-        protected Person Person;
-
-        public void Decorate(Person person)
-        {
-            Person = person;
-        }
-
-        public override void Show()
-        {
-            Person?.Show();
-        }
+        Name = name;
     }
 
-    internal class Tshirts : Finery
+    public virtual void Show()
     {
-        public override void Show()
-        {
-            Console.WriteLine("Tshirts");
-            base.Show();
-        }
+        Console.WriteLine($"装扮的{Name}");
+    }
+}
+
+internal class Finery : Person
+{
+    protected Person Person;
+
+    public void Decorate(Person person)
+    {
+        Person = person;
     }
 
-    internal class Pants : Finery
+    public override void Show()
     {
-        public override void Show()
-        {
-            Console.WriteLine("Pants");
-            base.Show();
-        }
+        Person?.Show();
+    }
+}
+
+internal class Tshirts : Finery
+{
+    public override void Show()
+    {
+        Console.WriteLine("Tshirts");
+        base.Show();
+    }
+}
+
+internal class Pants : Finery
+{
+    public override void Show()
+    {
+        Console.WriteLine("Pants");
+        base.Show();
     }
 }

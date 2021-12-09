@@ -1,33 +1,30 @@
-﻿using System;
+﻿namespace BridgePattern;
 
-namespace BridgePattern
+internal abstract class HandsetSoft
 {
-    internal abstract class HandsetSoft
-    {
-        public abstract void Run();
-    }
+    public abstract void Run();
+}
 
-    internal class HandsetGame : HandsetSoft
+internal class HandsetGame : HandsetSoft
+{
+    public override void Run()
     {
-        public override void Run()
-        {
-            Console.WriteLine("Game is running...");
-        }
+        Console.WriteLine("Game is running...");
     }
+}
 
-    internal class HandsetMp3 : HandsetSoft
+internal class HandsetMp3 : HandsetSoft
+{
+    public override void Run()
     {
-        public override void Run()
-        {
-            Console.WriteLine("Mp3 is running...");
-        }
+        Console.WriteLine("Mp3 is running...");
     }
+}
 
-    internal class HandsetAddressList : HandsetSoft
+internal class HandsetAddressList : HandsetSoft
+{
+    public override void Run()
     {
-        public override void Run()
-        {
-            Console.WriteLine("AddressList is running...");
-        }
+        Console.WriteLine("AddressList is running...");
     }
 }

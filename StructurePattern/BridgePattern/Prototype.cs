@@ -1,46 +1,43 @@
-﻿using System;
+﻿namespace BridgePattern;
 
-namespace BridgePattern
+internal abstract class Implementor
 {
-    internal abstract class Implementor
+    public abstract void Operation();
+}
+
+internal class ConcreteImplementorA : Implementor
+{
+    public override void Operation()
     {
-        public abstract void Operation();
+        Console.WriteLine("ImplementorA Operation");
+    }
+}
+
+internal class ConcreteImplementorB : Implementor
+{
+    public override void Operation()
+    {
+        Console.WriteLine("ImplementorB Operation");
+    }
+}
+
+internal abstract class Abstraction
+{
+    protected Implementor Implementor;
+
+    public void SetImplementor(Implementor implementor)
+    {
+        Implementor = implementor;
     }
 
-    internal class ConcreteImplementorA : Implementor
+    public abstract void Operation();
+}
+
+internal class RefinedAbstraction : Abstraction
+{
+    public override void Operation()
     {
-        public override void Operation()
-        {
-            Console.WriteLine("ImplementorA Operation");
-        }
-    }
-
-    internal class ConcreteImplementorB : Implementor
-    {
-        public override void Operation()
-        {
-            Console.WriteLine("ImplementorB Operation");
-        }
-    }
-
-    internal abstract class Abstraction
-    {
-        protected Implementor Implementor;
-
-        public void SetImplementor(Implementor implementor)
-        {
-            Implementor = implementor;
-        }
-
-        public abstract void Operation();
-    }
-
-    internal class RefinedAbstraction : Abstraction
-    {
-        public override void Operation()
-        {
-            Implementor.Operation();
-            Console.WriteLine("Invoke in RefinedAbstraction");
-        }
+        Implementor.Operation();
+        Console.WriteLine("Invoke in RefinedAbstraction");
     }
 }

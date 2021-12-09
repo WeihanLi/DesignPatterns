@@ -1,47 +1,44 @@
-﻿using System;
+﻿namespace MediatorPattern;
 
-namespace MediatorPattern
+internal abstract class Colleague
 {
-    internal abstract class Colleague
+    protected Mediator Mediator;
+
+    protected Colleague(Mediator mediator) => Mediator = mediator;
+
+    public abstract void Notify(string message);
+}
+
+internal class ConcreteColleague1 : Colleague
+{
+    public ConcreteColleague1(Mediator mediator) : base(mediator)
     {
-        protected Mediator Mediator;
-
-        protected Colleague(Mediator mediator) => Mediator = mediator;
-
-        public abstract void Notify(string message);
     }
 
-    internal class ConcreteColleague1 : Colleague
+    public void Send(string message)
     {
-        public ConcreteColleague1(Mediator mediator) : base(mediator)
-        {
-        }
-
-        public void Send(string message)
-        {
-            Mediator.Send(message, this);
-        }
-
-        public override void Notify(string message)
-        {
-            Console.WriteLine($"同事1 得到信息：{message}");
-        }
+        Mediator.Send(message, this);
     }
 
-    internal class ConcreteColleague2 : Colleague
+    public override void Notify(string message)
     {
-        public ConcreteColleague2(Mediator mediator) : base(mediator)
-        {
-        }
+        Console.WriteLine($"同事1 得到信息：{message}");
+    }
+}
 
-        public void Send(string message)
-        {
-            Mediator.Send(message, this);
-        }
+internal class ConcreteColleague2 : Colleague
+{
+    public ConcreteColleague2(Mediator mediator) : base(mediator)
+    {
+    }
 
-        public override void Notify(string message)
-        {
-            Console.WriteLine($"同事2 得到信息：{message}");
-        }
+    public void Send(string message)
+    {
+        Mediator.Send(message, this);
+    }
+
+    public override void Notify(string message)
+    {
+        Console.WriteLine($"同事2 得到信息：{message}");
     }
 }

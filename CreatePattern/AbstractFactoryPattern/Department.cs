@@ -1,6 +1,5 @@
-﻿namespace AbstractFactoryPattern
+﻿namespace AbstractFactoryPattern;
+
+public class Department
 {
-    public class Department
-    {
-    }
 }

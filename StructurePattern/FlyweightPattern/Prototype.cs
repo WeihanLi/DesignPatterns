@@ -1,33 +1,31 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 
-namespace FlyweightPattern
+namespace FlyweightPattern;
+
+internal abstract class Flyweight
 {
-    internal abstract class Flyweight
-    {
-        public abstract void Operation(int extrinsicstate);
-    }
+    public abstract void Operation(int extrinsicstate);
+}
 
-    internal class ConcreteFlyweight : Flyweight
+internal class ConcreteFlyweight : Flyweight
+{
+    public override void Operation(int extrinsicstate)
     {
-        public override void Operation(int extrinsicstate)
-        {
-            Console.WriteLine("operation in ConcreteFlyweight");
-        }
+        Console.WriteLine("operation in ConcreteFlyweight");
     }
+}
 
-    internal class UnsharedFlyweight : Flyweight
+internal class UnsharedFlyweight : Flyweight
+{
+    public override void Operation(int extrinsicstate)
     {
-        public override void Operation(int extrinsicstate)
-        {
-            Console.WriteLine("operation in UnsharedFlyweight");
-        }
+        Console.WriteLine("operation in UnsharedFlyweight");
     }
+}
 
-    internal class FlyWeightFactory
-    {
-        private readonly ConcurrentDictionary<string, Flyweight> _flyweights = new ConcurrentDictionary<string, Flyweight>();
+internal class FlyWeightFactory
+{
+    private readonly ConcurrentDictionary<string, Flyweight> _flyweights = new ConcurrentDictionary<string, Flyweight>();
 
-        public Flyweight GetFlyweight(string name) => _flyweights.GetOrAdd(name, n => new ConcreteFlyweight());
-    }
+    public Flyweight GetFlyweight(string name) => _flyweights.GetOrAdd(name, n => new ConcreteFlyweight());
 }

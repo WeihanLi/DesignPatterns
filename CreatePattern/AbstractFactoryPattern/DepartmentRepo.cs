@@ -1,25 +1,22 @@
-﻿using System;
+﻿namespace AbstractFactoryPattern;
 
-namespace AbstractFactoryPattern
+public interface IDepartmentRepo
 {
-    public interface IDepartmentRepo
-    {
-        void CreateDepartment(Department department);
-    }
+    void CreateDepartment(Department department);
+}
 
-    internal class SqlServerDepartmentRepo : IDepartmentRepo
+internal class SqlServerDepartmentRepo : IDepartmentRepo
+{
+    public void CreateDepartment(Department department)
     {
-        public void CreateDepartment(Department department)
-        {
-            Console.WriteLine("Create department in SqlServer");
-        }
+        Console.WriteLine("Create department in SqlServer");
     }
+}
 
-    internal class AccessDepartmentRepo : IDepartmentRepo
+internal class AccessDepartmentRepo : IDepartmentRepo
+{
+    public void CreateDepartment(Department department)
     {
-        public void CreateDepartment(Department department)
-        {
-            Console.WriteLine("Create department in Access");
-        }
+        Console.WriteLine("Create department in Access");
     }
 }
