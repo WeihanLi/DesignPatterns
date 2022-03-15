@@ -10,10 +10,10 @@
     <RepositoryUrl>https://github.com/WeihanLi/DesignPatterns</RepositoryUrl>
 
     <Authors>WeihanLi</Authors>
-    <Copyright>Copyright 2017-2021 (c) WeihanLi</Copyright>
+    <Copyright>Copyright 2017-2022 (c) WeihanLi</Copyright>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WeihanLi.Common" Version="1.0.47" />
+    <PackageReference Include="WeihanLi.Common" Version="1.0.49" />
   </ItemGroup>
   <ItemGroup>
     <Using Include="Microsoft.Extensions.DependencyInjection" />
