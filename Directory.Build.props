@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <OutputType>Exe</OutputType>
 
     <LangVersion>latest</LangVersion>
@@ -12,7 +12,7 @@
     <Copyright>Copyright 2017-2022 (c) WeihanLi</Copyright>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WeihanLi.Common" Version="1.0.50" />
+    <PackageReference Include="WeihanLi.Common" Version="1.0.56" />
   </ItemGroup>
   <ItemGroup>
     <Using Include="Microsoft.Extensions.DependencyInjection" />
