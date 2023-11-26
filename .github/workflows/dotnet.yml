@@ -2,23 +2,49 @@ name: dotnet
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  mac-build:
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x'
-        # include-prerelease: true
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+        dotnet-version: |
+          8.x
+    - name: dotnet info
+      run: dotnet --info
+    - name: build
+      run: dotnet build -c Release
+  
+  linux-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: |
+          8.x
+    - name: dotnet info
+      run: dotnet --info
+    - name: build
+      run: dotnet build -c Release
+      
+  windows-build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: |
+          8.x
+    - name: dotnet info
+      run: dotnet --info
+    - name: build
+      run: dotnet build -c Release
