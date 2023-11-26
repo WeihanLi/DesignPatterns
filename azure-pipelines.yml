@@ -12,7 +12,7 @@ steps:
   displayName: 'Use .NET sdk'
   inputs:
     packageType: sdk
-    version: 7.0.x
+    version: 8.0.x
 
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
