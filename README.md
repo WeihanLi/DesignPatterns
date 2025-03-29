@@ -45,6 +45,8 @@ Design patterns from 《大话设计模式》 and some samples implemented by C#
 
 ## Overview 概览
 
+![image](https://github.com/user-attachments/assets/b664a09b-1950-405a-9476-8ae721b62af9)
+
 设计模式大体上可分为三类：
 
 - [创建型模式（Create）](./CreatePattern)
@@ -77,6 +79,3 @@ Design patterns from 《大话设计模式》 and some samples implemented by C#
     1. [迭代器模式（Iterator）](./BehaviorPattern/IteratorPattern)
     1. [策略模式（Strategy）](./BehaviorPattern/StrategyPattern)
 
-## Contact
-
-Contact me if you need: <weihanli@outlook.com>
