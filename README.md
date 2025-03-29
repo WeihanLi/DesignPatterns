@@ -4,7 +4,7 @@
 
 Design patterns from 《大话设计模式》 and some samples implemented by C#.
 
-《大话设计模式》 中设计模式总结，示例代码是用 C# 写的，如果要自己编译请[下载安装](https://get.dot.net) .NET SDK
+《大话设计模式》 中设计模式总结，示例代码是用 C# 写的，如果需要自己编译请[安装 .NET SDK](https://get.dot.net)，[下载 PDF 点这里](大话设计模式.pdf)
 
 ## 设计模式设计原则
 
