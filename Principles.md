@@ -1,5 +1,8 @@
 # 设计模式设计原则
 
+<img width="1100" height="1430" alt="image" src="https://github.com/user-attachments/assets/c1acd2ea-11aa-4c8c-9e84-3663443df022" />
+
+
 - 单一职责原则
 
     > 对于一个类而言，应该仅有一个引起它变化的原因
