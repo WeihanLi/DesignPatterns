@@ -15,8 +15,12 @@ All diagrams are provided in PlantUML format (.puml files) which can be rendered
 ## Usage
 
 To render these diagrams:
-1. Install PlantUML or use online renderer at http://www.plantuml.com/plantuml/uml/
-2. Open the .puml files and render them as PNG/SVG images
+1. **Online**: Use online renderer at http://www.plantuml.com/plantuml/uml/
+2. **Local Installation**: Install PlantUML locally
+3. **VS Code**: Install the PlantUML extension for VS Code for inline preview and rendering
+4. **IDE Plugins**: Use PlantUML plugins available for IntelliJ IDEA, Eclipse, and other IDEs
+
+Open the .puml files and render them as PNG/SVG images
 
 ## Patterns Included
 
