@@ -1,0 +1,32 @@
+<Solution>
+  <Folder Name="/BehaviorPatterns/">
+    <Project Path="BehaviorPattern/ChainOfResponsibilityPattern/ChainOfResponsibilityPattern.csproj" />
+    <Project Path="BehaviorPattern/CommandPattern/CommandPattern.csproj" />
+    <Project Path="BehaviorPattern/InterpreterPattern/InterpreterPattern.csproj" />
+    <Project Path="BehaviorPattern/IteratorPattern/IteratorPattern.csproj" />
+    <Project Path="BehaviorPattern/MediatorPattern/MediatorPattern.csproj" />
+    <Project Path="BehaviorPattern/MementoPattern/MementoPattern.csproj" />
+    <Project Path="BehaviorPattern/ObserverPattern/ObserverPattern.csproj" />
+    <Project Path="BehaviorPattern/StatePattern/StatePattern.csproj" />
+    <Project Path="BehaviorPattern/StrategyPattern/StrategyPattern.csproj" />
+    <Project Path="BehaviorPattern/TemplateMethodPattern/TemplateMethodPattern.csproj" />
+    <Project Path="BehaviorPattern/VisitorPattern/VisitorPattern.csproj" />
+  </Folder>
+  <Folder Name="/CreatePatterns/">
+    <Project Path="CreatePattern/AbstractFactoryPattern/AbstractFactoryPattern.csproj" />
+    <Project Path="CreatePattern/BuilderPattern/BuilderPattern.csproj" />
+    <Project Path="CreatePattern/FactoryMethodPattern/FactoryMethodPattern.csproj" />
+    <Project Path="CreatePattern/PrototypePattern/PrototypePattern.csproj" />
+    <Project Path="CreatePattern/SimpleFactoryPattern/SimpleFactoryPattern.csproj" />
+    <Project Path="CreatePattern/SingletonPattern/SingletonPattern.csproj" />
+  </Folder>
+  <Folder Name="/StructurePatterns/">
+    <Project Path="StructurePattern/AdapterPattern/AdapterPattern.csproj" />
+    <Project Path="StructurePattern/BridgePattern/BridgePattern.csproj" />
+    <Project Path="StructurePattern/CompositePattern/CompositePattern.csproj" />
+    <Project Path="StructurePattern/DecoratorPattern/DecoratorPattern.csproj" />
+    <Project Path="StructurePattern/FacadePattern/FacadePattern.csproj" />
+    <Project Path="StructurePattern/FlyweightPattern/FlyweightPattern.csproj" />
+    <Project Path="StructurePattern/ProxyPattern/ProxyPattern.csproj" />
+  </Folder>
+</Solution>
