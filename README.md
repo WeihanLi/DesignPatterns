@@ -49,6 +49,8 @@ Design patterns from 《大话设计模式》 and some samples implemented by C#
 
 设计模式大体上可分为三类：
 
+> **UML 类图**：本项目包含了所有设计模式的 UML 类图，位于 [uml](./uml) 文件夹中，使用 PlantUML 格式，可在线渲染或本地查看。
+
 - [创建型模式（Create）](./CreatePattern)
     1. [简单工厂（SimpleFactory）](./CreatePattern/SimpleFactoryPattern)
     1. [抽象工厂（AbstractFactory）](./CreatePattern/AbstractFactoryPattern)

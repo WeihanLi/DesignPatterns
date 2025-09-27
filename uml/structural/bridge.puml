@@ -1,0 +1,94 @@
+@startuml Bridge Pattern
+!theme plain
+
+title Bridge Pattern
+
+abstract class Abstraction {
+    #Implementor: Implementor
+    +SetImplementor(implementor: Implementor): void
+    +{abstract} Operation(): void
+}
+
+class RefinedAbstraction {
+    +Operation(): void
+}
+
+abstract class Implementor {
+    +{abstract} Operation(): void
+}
+
+class ConcreteImplementorA {
+    +Operation(): void
+}
+
+class ConcreteImplementorB {
+    +Operation(): void
+}
+
+abstract class HandsetBrand {
+    #Soft: HandsetSoft
+    +SetHandsetSoft(soft: HandsetSoft): void
+    +{abstract} Run(): void
+}
+
+class HandsetBrandM {
+    +Run(): void
+}
+
+class HandsetBrandN {
+    +Run(): void
+}
+
+abstract class HandsetSoft {
+    +{abstract} Run(): void
+}
+
+class HandsetGame {
+    +Run(): void
+}
+
+class HandsetMp3 {
+    +Run(): void
+}
+
+class HandsetAddressList {
+    +Run(): void
+}
+
+class Client {
+    +Main(): void
+}
+
+Abstraction <|-- RefinedAbstraction
+Implementor <|-- ConcreteImplementorA
+Implementor <|-- ConcreteImplementorB
+Abstraction -> Implementor : bridge
+
+HandsetBrand <|-- HandsetBrandM
+HandsetBrand <|-- HandsetBrandN
+HandsetSoft <|-- HandsetGame
+HandsetSoft <|-- HandsetMp3
+HandsetSoft <|-- HandsetAddressList
+HandsetBrand -> HandsetSoft : bridge
+
+Client -> Abstraction : uses
+Client -> HandsetBrand : uses
+
+note right of Abstraction
+  Abstraction defines interface
+  for the control part of the
+  two class hierarchies
+end note
+
+note right of Implementor
+  Implementor defines interface
+  for implementation classes
+end note
+
+note right of HandsetBrand
+  Handset brands separated from
+  software functionality using
+  bridge pattern
+end note
+
+@enduml

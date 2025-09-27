@@ -1,0 +1,59 @@
+@startuml Flyweight Pattern
+!theme plain
+
+title Flyweight Pattern
+
+abstract class Flyweight {
+    +{abstract} Operation(extrinsicstate: int): void
+}
+
+class ConcreteFlyweight {
+    +Operation(extrinsicstate: int): void
+}
+
+class UnsharedFlyweight {
+    +Operation(extrinsicstate: int): void
+}
+
+class FlyWeightFactory {
+    -flyweights: ConcurrentDictionary<string, Flyweight>
+    +GetFlyweight(name: string): Flyweight
+}
+
+class Client {
+    +Main(): void
+}
+
+Flyweight <|-- ConcreteFlyweight
+Flyweight <|-- UnsharedFlyweight
+FlyWeightFactory -> Flyweight : creates and manages
+FlyWeightFactory *-- Flyweight
+
+Client -> FlyWeightFactory : uses
+Client -> Flyweight : uses
+
+note right of Flyweight
+  Flyweight declares interface
+  through which flyweights can
+  receive and act on extrinsic state
+end note
+
+note right of ConcreteFlyweight
+  Implements Flyweight interface
+  and stores intrinsic state.
+  Must be shareable.
+end note
+
+note right of FlyWeightFactory
+  Creates and manages flyweight
+  objects. Ensures flyweights
+  are shared properly.
+end note
+
+note right of UnsharedFlyweight
+  Not all flyweight subclasses
+  need to be shared. Some may
+  store all their state
+end note
+
+@enduml

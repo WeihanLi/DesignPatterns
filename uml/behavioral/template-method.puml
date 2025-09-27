@@ -1,0 +1,67 @@
+@startuml Template Method Pattern
+!theme plain
+
+title Template Method Pattern
+
+class TestPaper {
+    #StudentName: string
+    +TestResult(): void
+    -TestQuestion1(): void
+    -TestQuestion2(): void
+    -TestQuestion3(): void
+    #Answer1(): string
+    #Answer2(): string
+    #Answer3(): string
+}
+
+class TestPaperA {
+    +TestPaperA()
+    #Answer1(): string
+    #Answer2(): string
+    #Answer3(): string
+}
+
+class TestPaperB {
+    +TestPaperB()
+    #Answer1(): string
+    #Answer2(): string
+    #Answer3(): string
+}
+
+class Client {
+    +Main(): void
+}
+
+TestPaper <|-- TestPaperA
+TestPaper <|-- TestPaperB
+
+Client -> TestPaper : uses
+
+note right of TestPaper
+  Template method TestResult()
+  defines skeleton of algorithm.
+  Subclasses override specific
+  steps (Answer methods)
+end note
+
+note bottom of TestPaperA
+  Concrete class provides
+  specific implementation
+  for student "路人甲"
+end note
+
+note bottom of TestPaperB
+  Concrete class provides
+  specific implementation
+  for student "吃泡面乙"
+end note
+
+note top of TestPaper
+  Template Method pattern defines
+  skeleton of an algorithm in base
+  class, letting subclasses override
+  specific steps without changing
+  the algorithm's structure
+end note
+
+@enduml

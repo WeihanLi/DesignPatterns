@@ -1,0 +1,83 @@
+@startuml Iterator Pattern
+!theme plain
+
+title Iterator Pattern
+
+abstract class Iterator {
+    +{abstract} First(): object
+    +{abstract} Next(): object
+    +{abstract} IsDone(): bool
+    +{abstract} CurrentItem(): object
+}
+
+class ConcreteIterator {
+    -aggregate: ConcreteAggregate
+    -current: int
+    +ConcreteIterator(aggregate: ConcreteAggregate)
+    +First(): object
+    +Next(): object
+    +IsDone(): bool
+    +CurrentItem(): object
+}
+
+class ConcreteIteratorDesc {
+    -aggregate: ConcreteAggregate
+    -current: int
+    +ConcreteIteratorDesc(aggregate: ConcreteAggregate)
+    +First(): object
+    +Next(): object
+    +IsDone(): bool
+    +CurrentItem(): object
+}
+
+abstract class Aggregate {
+    +{abstract} CreateIterator(): Iterator
+}
+
+class ConcreteAggregate {
+    -items: IList<object>
+    +CreateIterator(): Iterator
+    +TotalCount: int
+    +this[index: int]: object
+}
+
+class Client {
+    +Main(): void
+}
+
+Iterator <|-- ConcreteIterator
+Iterator <|-- ConcreteIteratorDesc
+Aggregate <|-- ConcreteAggregate
+
+ConcreteIterator -> ConcreteAggregate : traverses
+ConcreteIteratorDesc -> ConcreteAggregate : traverses
+ConcreteAggregate ..> ConcreteIterator : creates
+
+Client -> Aggregate : uses
+Client -> Iterator : uses
+
+note right of Iterator
+  Iterator defines interface
+  for accessing and traversing
+  elements
+end note
+
+note right of ConcreteIterator
+  ConcreteIterator implements
+  Iterator interface and keeps
+  track of current position
+end note
+
+note right of Aggregate
+  Aggregate defines interface
+  for creating Iterator object
+end note
+
+note right of ConcreteAggregate
+  ConcreteAggregate implements
+  Iterator creation interface
+  and returns appropriate
+  ConcreteIterator instance
+end note
+
+@enduml

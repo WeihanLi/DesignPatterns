@@ -1,0 +1,95 @@
+@startuml Command Pattern
+!theme plain
+
+title Command Pattern
+
+abstract class Command {
+    #Receiver: Receiver
+    +Command(receiver: Receiver)
+    +{abstract} Execute(): void
+}
+
+class ConcreteCommand {
+    +ConcreteCommand(receiver: Receiver)
+    +Execute(): void
+}
+
+class Receiver {
+    +Action(): void
+}
+
+class Invoker {
+    -command: Command
+    +SetCommand(command: Command): void
+    +ExecuteCommand(): void
+}
+
+abstract class OrderCommand {
+    #Receiver: Barbecuer
+    +OrderCommand(receiver: Barbecuer)
+    +{abstract} ExecuteCommand(): void
+}
+
+class BakeMuttonCommand {
+    +BakeMuttonCommand(receiver: Barbecuer)
+    +ExecuteCommand(): void
+    +ToString(): string
+}
+
+class BakeChickenWingCommand {
+    +BakeChickenWingCommand(receiver: Barbecuer)
+    +ExecuteCommand(): void
+    +ToString(): string
+}
+
+class Barbecuer {
+    +BakeMutton(): void
+    +BakeChickenWing(): void
+}
+
+class Waiter {
+    -orders: ICollection<OrderCommand>
+    +SetOrder(order: OrderCommand): void
+    +CancelOrder(order: OrderCommand): void
+    +Notify(): void
+}
+
+class Client {
+    +Main(): void
+}
+
+Command <|-- ConcreteCommand
+Command -> Receiver
+Invoker -> Command
+
+OrderCommand <|-- BakeMuttonCommand
+OrderCommand <|-- BakeChickenWingCommand
+OrderCommand -> Barbecuer
+Waiter *-- OrderCommand
+
+Client -> Invoker : uses
+Client -> Waiter : uses
+
+note right of Command
+  Command declares interface
+  for executing an operation
+end note
+
+note right of ConcreteCommand
+  ConcreteCommand defines binding
+  between Receiver object and action.
+  Implements Execute by invoking
+  corresponding operations on Receiver
+end note
+
+note right of Invoker
+  Invoker asks command to
+  carry out the request
+end note
+
+note right of Waiter
+  Waiter manages multiple orders
+  and can execute them in batch
+end note
+
+@enduml
