@@ -1,0 +1,58 @@
+@startuml Factory Method Pattern
+!theme plain
+
+title Factory Method Pattern
+
+interface ILeifengFactory {
+    +CreateLeifeng(): Leifeng
+}
+
+class UndergraduteFactory {
+    +CreateLeifeng(): Leifeng
+}
+
+class VolunteerFactory {
+    +CreateLeifeng(): Leifeng
+}
+
+class Leifeng {
+    +Sweep(): void
+    +Wash(): void
+    +BuyRice(): void
+}
+
+class Undergradute {
+}
+
+class Volunteer {
+}
+
+class Client {
+    +Main(): void
+}
+
+ILeifengFactory <|-- UndergraduteFactory
+ILeifengFactory <|-- VolunteerFactory
+
+Leifeng <|-- Undergradute
+Leifeng <|-- Volunteer
+
+UndergraduteFactory ..> Undergradute : creates
+VolunteerFactory ..> Volunteer : creates
+
+Client -> ILeifengFactory : uses
+
+note right of ILeifengFactory
+  Factory method defines 
+  interface for creating objects
+  but lets subclasses decide 
+  which class to instantiate
+end note
+
+note right of Leifeng
+  Product base class
+  defines interface for
+  objects factory creates
+end note
+
+@enduml

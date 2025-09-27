@@ -1,0 +1,94 @@
+@startuml Abstract Factory Pattern
+!theme plain
+
+title Abstract Factory Pattern
+
+interface IDbFactory {
+    +CreateUserRepo(): IUserRepo
+    +CreateDepartmentRepo(): IDepartmentRepo
+}
+
+class SqlServerFactory {
+    +CreateUserRepo(): IUserRepo
+    +CreateDepartmentRepo(): IDepartmentRepo
+}
+
+class AccessFactory {
+    +CreateUserRepo(): IUserRepo
+    +CreateDepartmentRepo(): IDepartmentRepo
+}
+
+interface IUserRepo {
+    +Insert(user: User): void
+    +GetUser(userId: int): User
+}
+
+interface IDepartmentRepo {
+    +CreateDepartment(department: Department): void
+}
+
+class SqlServerUserRepo {
+    +Insert(user: User): void
+    +GetUser(userId: int): User
+}
+
+class AccessUserRepo {
+    +Insert(user: User): void
+    +GetUser(userId: int): User
+}
+
+class SqlServerDepartmentRepo {
+    +CreateDepartment(department: Department): void
+}
+
+class AccessDepartmentRepo {
+    +CreateDepartment(department: Department): void
+}
+
+class User {
+    +Id: int
+    +Name: string
+}
+
+class Department {
+    +Id: int
+    +Name: string
+}
+
+class Client {
+    +Main(): void
+}
+
+IDbFactory <|-- SqlServerFactory
+IDbFactory <|-- AccessFactory
+
+IUserRepo <|-- SqlServerUserRepo
+IUserRepo <|-- AccessUserRepo
+
+IDepartmentRepo <|-- SqlServerDepartmentRepo
+IDepartmentRepo <|-- AccessDepartmentRepo
+
+SqlServerFactory ..> SqlServerUserRepo : creates
+SqlServerFactory ..> SqlServerDepartmentRepo : creates
+AccessFactory ..> AccessUserRepo : creates
+AccessFactory ..> AccessDepartmentRepo : creates
+
+Client -> IDbFactory : uses
+
+note right of IDbFactory
+  Abstract factory creates 
+  families of related objects
+  (SqlServer or Access)
+end note
+
+note right of SqlServerFactory
+  Concrete factory for
+  SqlServer database objects
+end note
+
+note right of AccessFactory
+  Concrete factory for
+  Access database objects
+end note
+
+@enduml

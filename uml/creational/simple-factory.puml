@@ -1,0 +1,55 @@
+@startuml Simple Factory Pattern
+!theme plain
+
+title Simple Factory Pattern
+
+class OperationFactory {
+    +{static} CreateOperation(operate: string): Operation
+}
+
+abstract class Operation {
+    +NumberA: double
+    +NumberB: double
+    +{abstract} GetResult(): double
+}
+
+class OperationAdd {
+    +GetResult(): double
+}
+
+class OpertaionSub {
+    +GetResult(): double
+}
+
+class OperationMul {
+    +GetResult(): double
+}
+
+class OperationDiv {
+    +GetResult(): double
+}
+
+class Client {
+    +Main(): void
+}
+
+Operation <|-- OperationAdd
+Operation <|-- OpertaionSub
+Operation <|-- OperationMul
+Operation <|-- OperationDiv
+
+OperationFactory ..> Operation : creates
+Client -> OperationFactory : uses
+
+note right of OperationFactory
+  Factory creates concrete 
+  Operation objects based 
+  on input parameter
+end note
+
+note right of Operation
+  Base class for all
+  mathematical operations
+end note
+
+@enduml

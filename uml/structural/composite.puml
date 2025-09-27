@@ -1,0 +1,95 @@
+@startuml Composite Pattern
+!theme plain
+
+title Composite Pattern
+
+abstract class Component {
+    #Name: string
+    +Component(name: string)
+    +{abstract} Add(c: Component): void
+    +{abstract} Remove(c: Component): void
+    +{abstract} Display(depth: int): void
+}
+
+class Composite {
+    -children: List<Component>
+    +Composite(name: string)
+    +Add(c: Component): void
+    +Remove(c: Component): void
+    +Display(depth: int): void
+}
+
+class Leaf {
+    +Leaf(name: string)
+    +Add(c: Component): void
+    +Remove(c: Component): void
+    +Display(depth: int): void
+}
+
+abstract class Company {
+    #Name: string
+    +Company(name: string)
+    +{abstract} Add(company: Company): void
+    +{abstract} Remove(company: Company): void
+    +Display(depth: int): void
+    +{abstract} LineOfDuty(): void
+}
+
+class ConcreteCompany {
+    -children: List<Company>
+    +ConcreteCompany(name: string)
+    +Add(company: Company): void
+    +Remove(company: Company): void
+    +Display(depth: int): void
+    +LineOfDuty(): void
+}
+
+class HrDepartment {
+    +HrDepartment(name: string)
+    +Add(company: Company): void
+    +Remove(company: Company): void
+    +LineOfDuty(): void
+}
+
+class FinanceDepartment {
+    +FinanceDepartment(name: string)
+    +Add(company: Company): void
+    +Remove(company: Company): void
+    +LineOfDuty(): void
+}
+
+class Client {
+    +Main(): void
+}
+
+Component <|-- Composite
+Component <|-- Leaf
+Composite *-- Component
+
+Company <|-- ConcreteCompany
+Company <|-- HrDepartment
+Company <|-- FinanceDepartment
+ConcreteCompany *-- Company
+
+Client -> Component : uses
+Client -> Company : uses
+
+note right of Component
+  Base component declares
+  interface for objects
+  in composition
+end note
+
+note right of Composite
+  Defines behavior for components
+  having children, stores child
+  components and implements
+  child-related operations
+end note
+
+note right of Leaf
+  Represents leaf objects in
+  composition. Has no children.
+end note
+
+@enduml

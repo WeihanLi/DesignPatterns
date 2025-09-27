@@ -1,0 +1,89 @@
+@startuml Observer Pattern
+!theme plain
+
+title Observer Pattern
+
+interface ISubject {
+    +Notify(): void
+    +SubjectState: string
+}
+
+class Boss {
+    -observers: IList<Observer>
+    +Attach(observer: Observer): void
+    +Detach(observer: Observer): void
+    +Notify(): void
+    +SubjectState: string
+}
+
+class NewBoss {
+    +Update: event Action
+    +Notify(): void
+    +SubjectState: string
+}
+
+abstract class Observer {
+    #Name: string
+    #Subject: ISubject
+    +Observer(name: string, subject: ISubject)
+    +{abstract} Update(): void
+}
+
+class StockObserver {
+    +StockObserver(name: string, subject: ISubject)
+    +Update(): void
+}
+
+class NBAObserver {
+    +NBAObserver(name: string, subject: ISubject)
+    +Update(): void
+}
+
+class GamePlayerObserver {
+    -name: string
+    -subject: ISubject
+    +GamePlayerObserver(name: string, subject: ISubject)
+    +CloseGame(): void
+}
+
+class Client {
+    +Main(): void
+}
+
+ISubject <|-- Boss
+ISubject <|-- NewBoss
+
+Observer <|-- StockObserver
+Observer <|-- NBAObserver
+
+Observer -> ISubject : observes
+Boss *-- Observer
+NewBoss -> GamePlayerObserver : notifies
+
+Client -> ISubject : uses
+Client -> Observer : uses
+
+note right of ISubject
+  Subject interface defines
+  methods for attaching/detaching
+  observers and notifying them
+end note
+
+note right of Observer
+  Observer interface defines
+  update method to be called
+  when subject changes
+end note
+
+note right of Boss
+  Concrete subject maintains
+  list of observers and
+  notifies them of changes
+end note
+
+note right of NewBoss
+  Uses C# events for
+  observer notification
+end note
+
+@enduml
