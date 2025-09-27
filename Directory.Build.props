@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <OutputType>Exe</OutputType>
 
     <LangVersion>latest</LangVersion>
@@ -9,10 +9,10 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/WeihanLi/DesignPatterns</RepositoryUrl>
     <Authors>WeihanLi</Authors>
-    <Copyright>Copyright 2017-2024 (c) WeihanLi</Copyright>
+    <Copyright>Copyright 2017-2025 (c) WeihanLi</Copyright>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WeihanLi.Common" Version="1.0.61" />
+    <PackageReference Include="WeihanLi.Common" Version="1.0.82" />
   </ItemGroup>
   <ItemGroup>
     <Using Include="Microsoft.Extensions.DependencyInjection" />
