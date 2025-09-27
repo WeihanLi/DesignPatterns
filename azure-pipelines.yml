@@ -9,10 +9,11 @@ variables:
 
 steps:
 - task: UseDotNet@2
-  displayName: 'Use .NET sdk'
+  displayName: 'Add .NET SDK'
   inputs:
     packageType: sdk
-    version: 8.0.x
+    version: 10.0.x
+    includePreviewVersions: true
 
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
