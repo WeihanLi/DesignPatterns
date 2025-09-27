@@ -1,0 +1,89 @@
+@startuml Visitor Pattern
+!theme plain
+
+title Visitor Pattern
+
+abstract class AbstractAction {
+    +{abstract} GetManConclusion(man: Man): void
+    +{abstract} GetWomanConclusion(woman: Woman): void
+}
+
+class Success {
+    +GetManConclusion(man: Man): void
+    +GetWomanConclusion(woman: Woman): void
+}
+
+class Fail {
+    +GetManConclusion(man: Man): void
+    +GetWomanConclusion(woman: Woman): void
+}
+
+class Marriage {
+    +GetManConclusion(man: Man): void
+    +GetWomanConclusion(woman: Woman): void
+}
+
+abstract class Person {
+    +{abstract} Accept(visitor: AbstractAction): void
+}
+
+class Man {
+    +Accept(visitor: AbstractAction): void
+}
+
+class Woman {
+    +Accept(visitor: AbstractAction): void
+}
+
+class PersonStructure {
+    -persons: IList<Person>
+    +Attach(person: Person): void
+    +Detach(person: Person): void
+    +Display(visitor: AbstractAction): void
+}
+
+class Client {
+    +Main(): void
+}
+
+AbstractAction <|-- Success
+AbstractAction <|-- Fail
+AbstractAction <|-- Marriage
+
+Person <|-- Man
+Person <|-- Woman
+
+PersonStructure *-- Person
+PersonStructure -> AbstractAction : uses
+Person -> AbstractAction : accepts
+
+Client -> PersonStructure : uses
+Client -> AbstractAction : uses
+
+note right of AbstractAction
+  Visitor declares visit operation
+  for each type of ConcreteElement
+  in object structure
+end note
+
+note right of Person
+  Element defines Accept operation
+  that takes visitor as argument
+end note
+
+note right of PersonStructure
+  ObjectStructure can enumerate
+  its elements and provide high-level
+  interface to allow visitor to
+  visit its elements
+end note
+
+note top of AbstractAction
+  Visitor pattern represents operation
+  to be performed on elements of
+  object structure. Lets you define
+  new operation without changing
+  classes of elements on which it operates
+end note
+
+@enduml

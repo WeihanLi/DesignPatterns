@@ -1,0 +1,55 @@
+@startuml Singleton Pattern
+!theme plain
+
+title Singleton Pattern
+
+class Singleton {
+    -{static} instance: Singleton
+    -{static} syncLock: object
+    -Singleton()
+    +{static} GetInstance(): Singleton
+}
+
+class Singleton1 {
+    -{static} readonly Instance: Singleton1
+    -Singleton1()
+    +{static} GetInstance(): Singleton1
+}
+
+class Singleton2 {
+    -{static} readonly Instances: ConcurrentDictionary<int, Singleton2>
+    -Singleton2()
+    +{static} GetInstance(): Singleton2
+}
+
+class Client {
+    +Main(): void
+}
+
+Client -> Singleton : GetInstance()
+Client -> Singleton1 : GetInstance()
+Client -> Singleton2 : GetInstance()
+
+note right of Singleton
+  Lazy initialization with 
+  double-checked locking
+  (懒汉式)
+end note
+
+note right of Singleton1
+  Eager initialization
+  initialized at class loading
+  (饿汉式)
+end note
+
+note right of Singleton2
+  Using ConcurrentDictionary
+  for thread-safe lazy initialization
+end note
+
+note top of Singleton
+  Ensures class has only one instance
+  and provides global point of access
+end note
+
+@enduml

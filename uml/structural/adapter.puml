@@ -1,0 +1,85 @@
+@startuml Adapter Pattern
+!theme plain
+
+title Adapter Pattern
+
+class Target {
+    +Request(): void
+}
+
+class Adaptee {
+    +SpecialRequest(): void
+}
+
+class TargetAdapter {
+    -adaptee: Adaptee
+    +Request(): void
+}
+
+abstract class Player {
+    +{abstract} Attact(): void
+    +{abstract} Defend(): void
+}
+
+class Forwards {
+    -name: string
+    +Forwards(name: string)
+    +Attact(): void
+    +Defend(): void
+}
+
+class Guards {
+    -name: string
+    +Guards(name: string)
+    +Attact(): void
+    +Defend(): void
+}
+
+class ForeignGuards {
+    -name: string
+    +ForeignGuards(name: string)
+    +进攻(): void
+    +防守(): void
+}
+
+class Translator {
+    -foreignGuards: ForeignGuards
+    +Translator(name: string)
+    +Attact(): void
+    +Defend(): void
+}
+
+class Client {
+    +Main(): void
+}
+
+Target <|-- TargetAdapter
+TargetAdapter *-- Adaptee
+
+Player <|-- Forwards
+Player <|-- Guards
+Player <|-- Translator
+Translator *-- ForeignGuards
+
+Client -> Target : uses
+Client -> Player : uses
+
+note right of TargetAdapter
+  Adapter converts interface
+  of Adaptee to Target interface
+  that clients expect
+end note
+
+note right of Translator
+  Adapter translates Chinese
+  method names to English
+  interface for ForeignGuards
+end note
+
+note right of Adaptee
+  Existing class with
+  incompatible interface
+  that needs adapting
+end note
+
+@enduml

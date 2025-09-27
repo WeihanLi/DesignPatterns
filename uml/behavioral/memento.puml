@@ -1,0 +1,67 @@
+@startuml Memento Pattern
+!theme plain
+
+title Memento Pattern
+
+class GameRole {
+    +Vitality: int
+    +Attack: int  
+    +Defense: int
+    +GameRole()
+    +StateDisplay(): void
+    +FightWithBoss(): void
+    +SaveState(): RoleStateMemento
+    +RecoveryState(memento: RoleStateMemento): void
+}
+
+class RoleStateMemento {
+    +Vitality: int
+    +Attack: int
+    +Defense: int
+    +RoleStateMemento(vitality: int, attack: int, defense: int)
+}
+
+class RoleStateCaretaker {
+    +Memento: RoleStateMemento
+}
+
+class Client {
+    +Main(): void
+}
+
+GameRole ..> RoleStateMemento : creates
+GameRole -> RoleStateMemento : uses
+RoleStateCaretaker -> RoleStateMemento : stores
+
+Client -> GameRole : uses
+Client -> RoleStateCaretaker : uses
+
+note right of GameRole
+  Originator creates memento
+  containing snapshot of its
+  current internal state and
+  uses memento to restore state
+end note
+
+note right of RoleStateMemento
+  Memento stores internal state
+  of Originator object. Protects
+  against access by objects
+  other than the originator
+end note
+
+note right of RoleStateCaretaker
+  Caretaker is responsible for
+  memento's safekeeping but
+  never operates on or examins
+  contents of memento
+end note
+
+note top of GameRole
+  Memento pattern captures and
+  externalizes object's internal
+  state so it can be restored later
+  without violating encapsulation
+end note
+
+@enduml

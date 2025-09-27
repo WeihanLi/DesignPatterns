@@ -1,0 +1,80 @@
+@startuml Prototype Pattern
+!theme plain
+
+title Prototype Pattern
+
+abstract class Prototype {
+    +Id: string
+    +Prototype(id: string)
+    +{abstract} Clone(): Prototype
+}
+
+class ConcretePrototype1 {
+    +ConcretePrototype1(id: string)
+    +Clone(): Prototype
+}
+
+interface ICloneable {
+    +Clone(): object
+}
+
+class SimpleResume {
+    -name: string
+    -email: string
+    -timePeriod: string
+    -company: string
+    +SetPersonalInfo(name: string, email: string): void
+    +SetWorkExperience(company: string, timePeriod: string): void
+    +Display(): void
+    +Clone(): object
+}
+
+class ComplexResume {
+    -workExperience: WorkExperience
+    -name: string
+    -email: string
+    +ComplexResume()
+    +SetPersonalInfo(name: string, email: string): void
+    +SetWorkExperience(company: string, timePeriod: string): void
+    +Show(): void
+    +Clone(): object
+}
+
+class WorkExperience {
+    +TimePeriod: string
+    +Company: string
+    +Clone(): object
+}
+
+class Client {
+    +Main(): void
+}
+
+Prototype <|-- ConcretePrototype1
+
+ICloneable <|-- SimpleResume
+ICloneable <|-- ComplexResume
+ICloneable <|-- WorkExperience
+
+ComplexResume *-- WorkExperience
+
+Client -> Prototype : uses
+Client -> SimpleResume : uses
+Client -> ComplexResume : uses
+
+note right of Prototype
+  Abstract prototype declares
+  clone interface
+end note
+
+note right of SimpleResume
+  Shallow copy implementation
+  using MemberwiseClone()
+end note
+
+note right of ComplexResume
+  Deep copy implementation
+  creates copies of referenced objects
+end note
+
+@enduml

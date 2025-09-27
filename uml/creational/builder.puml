@@ -1,0 +1,68 @@
+@startuml Builder Pattern
+!theme plain
+
+title Builder Pattern
+
+class Director {
+    +Construct(builder: Builder): void
+}
+
+abstract class Builder {
+    +{abstract} BuildPartA(): void
+    +{abstract} BuildPartB(): void
+    +{abstract} GetResult(): Product
+}
+
+class ConcreteBuilder1 {
+    -product: Product
+    +BuildPartA(): void
+    +BuildPartB(): void
+    +GetResult(): Product
+}
+
+class ConcreteBuilder2 {
+    -product: Product
+    +BuildPartA(): void
+    +BuildPartB(): void
+    +GetResult(): Product
+}
+
+class Product {
+    -parts: ICollection<string>
+    +Add(part: string): void
+    +Show(): void
+}
+
+class Client {
+    +Main(): void
+}
+
+Builder <|-- ConcreteBuilder1
+Builder <|-- ConcreteBuilder2
+
+ConcreteBuilder1 ..> Product : creates
+ConcreteBuilder2 ..> Product : creates
+
+Director -> Builder : uses
+Client -> Director : uses
+
+note right of Director
+  Director constructs a product
+  using the Builder interface
+end note
+
+note right of Builder
+  Abstract builder defines
+  interface for creating
+  parts of Product object
+end note
+
+note bottom of ConcreteBuilder1
+  ConcreteBuilder1 creates PartA, PartB
+end note
+
+note bottom of ConcreteBuilder2
+  ConcreteBuilder2 creates PartX, PartY
+end note
+
+@enduml

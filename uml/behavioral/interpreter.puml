@@ -1,0 +1,88 @@
+@startuml Interpreter Pattern
+!theme plain
+
+title Interpreter Pattern
+
+class Context {
+    +Input: string
+    +Output: string
+}
+
+abstract class AbstractExpression {
+    +{abstract} Interpret(context: Context): void
+}
+
+class TerminalExpression {
+    +Interpret(context: Context): void
+}
+
+class NoneTerminalExpression {
+    +Interpret(context: Context): void
+}
+
+class PlayContext {
+    +PlayText: string
+}
+
+abstract class MusicalExpression {
+    +Interpret(context: PlayContext): void
+    +{abstract} Execute(key: string, value: double): void
+}
+
+class MusicalNote {
+    +Execute(key: string, value: double): void
+}
+
+class MusicalScale {
+    +Execute(key: string, value: double): void
+}
+
+class MusicalSpeed {
+    +Execute(key: string, value: double): void
+}
+
+class Client {
+    +Main(): void
+}
+
+AbstractExpression <|-- TerminalExpression
+AbstractExpression <|-- NoneTerminalExpression
+AbstractExpression -> Context : interprets
+
+MusicalExpression <|-- MusicalNote
+MusicalExpression <|-- MusicalScale
+MusicalExpression <|-- MusicalSpeed
+MusicalExpression -> PlayContext : interprets
+
+Client -> AbstractExpression : uses
+Client -> MusicalExpression : uses
+Client -> Context : uses
+Client -> PlayContext : uses
+
+note right of AbstractExpression
+  AbstractExpression declares
+  abstract Interpret operation
+  that is common to all nodes
+  in abstract syntax tree
+end note
+
+note right of TerminalExpression
+  TerminalExpression implements
+  Interpret operation for
+  terminal symbols in grammar
+end note
+
+note right of MusicalExpression
+  Concrete example: interprets
+  musical notation including
+  notes, scales, and speeds
+end note
+
+note top of AbstractExpression
+  Interpreter pattern defines
+  representation for grammar
+  and interpreter to interpret
+  sentences in the language
+end note
+
+@enduml

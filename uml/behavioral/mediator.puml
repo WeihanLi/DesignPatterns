@@ -1,0 +1,74 @@
+@startuml Mediator Pattern
+!theme plain
+
+title Mediator Pattern
+
+abstract class Mediator {
+    +{abstract} Send(message: string, colleague: Colleague): void
+}
+
+class ConcreteMediator {
+    +Colleague1: Colleague
+    +Colleague2: Colleague
+    +Send(message: string, colleague: Colleague): void
+}
+
+abstract class Colleague {
+    #Mediator: Mediator
+    +Colleague(mediator: Mediator)
+    +{abstract} Notify(message: string): void
+}
+
+class ConcreteColleague1 {
+    +ConcreteColleague1(mediator: Mediator)
+    +Send(message: string): void
+    +Notify(message: string): void
+}
+
+class ConcreteColleague2 {
+    +ConcreteColleague2(mediator: Mediator)
+    +Send(message: string): void
+    +Notify(message: string): void
+}
+
+class Client {
+    +Main(): void
+}
+
+Mediator <|-- ConcreteMediator
+Colleague <|-- ConcreteColleague1
+Colleague <|-- ConcreteColleague2
+
+ConcreteMediator -> Colleague : manages
+Colleague -> Mediator : communicates through
+
+Client -> Mediator : uses
+Client -> Colleague : uses
+
+note right of Mediator
+  Mediator defines interface
+  for communication between
+  Colleague components
+end note
+
+note right of ConcreteMediator
+  ConcreteMediator implements
+  cooperative behavior by
+  coordinating Colleague objects
+end note
+
+note right of Colleague
+  Colleague classes communicate
+  with each other through
+  Mediator instead of directly
+end note
+
+note top of ConcreteMediator
+  Mediator pattern defines how
+  set of objects interact.
+  Promotes loose coupling by keeping
+  objects from referring to
+  each other explicitly
+end note
+
+@enduml

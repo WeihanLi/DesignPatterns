@@ -1,0 +1,79 @@
+@startuml Chain of Responsibility Pattern
+!theme plain
+
+title Chain of Responsibility Pattern
+
+abstract class Manager {
+    #ManagerName: string
+    #Superior: Manager
+    +Manager(managerName: string)
+    +SetSuperior(superior: Manager): void
+    +{abstract} RequestApplications(request: Request): void
+}
+
+class CommonManager {
+    +CommonManager(managerName: string)
+    +RequestApplications(request: Request): void
+}
+
+class Majordomo {
+    +Majordomo(managerName: string)
+    +RequestApplications(request: Request): void
+}
+
+class GeneralManager {
+    +GeneralManager(managerName: string)
+    +RequestApplications(request: Request): void
+}
+
+class Request {
+    +RequestType: string
+    +RequestContent: string
+    +RequestNum: int
+}
+
+class Client {
+    +Main(): void
+}
+
+Manager <|-- CommonManager
+Manager <|-- Majordomo
+Manager <|-- GeneralManager
+
+Manager -> Manager : successor
+Manager -> Request : handles
+
+Client -> Manager : uses
+Client -> Request : creates
+
+note right of Manager
+  Handler defines interface
+  for handling requests and
+  implements successor link
+end note
+
+note right of CommonManager
+  CommonManager handles requests
+  for leave <= 2 days, otherwise
+  passes to successor
+end note
+
+note right of Majordomo
+  Majordomo handles requests
+  for leave <= 5 days, otherwise
+  passes to successor
+end note
+
+note right of GeneralManager
+  GeneralManager handles all
+  leave requests and salary
+  increase <= 500
+end note
+
+note top of Manager
+  Chain of Responsibility passes
+  request along chain of handlers
+  until one handles it
+end note
+
+@enduml

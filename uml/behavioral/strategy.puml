@@ -1,0 +1,91 @@
+@startuml Strategy Pattern
+!theme plain
+
+title Strategy Pattern
+
+class Context {
+    -strategy: Strategy
+    +Context(strategy: Strategy)
+    +Implement(): void
+}
+
+abstract class Strategy {
+    +{abstract} AlgorithmImplement(): void
+}
+
+class ConcreteStrategyA {
+    +AlgorithmImplement(): void
+}
+
+class ConcreteStrategyB {
+    +AlgorithmImplement(): void
+}
+
+class ConcreteStrategyC {
+    +AlgorithmImplement(): void
+}
+
+abstract class AbstractCash {
+    +{abstract} AcceptCash(money: double): double
+}
+
+class CashNormal {
+    +AcceptCash(money: double): double
+}
+
+class CashRebate {
+    -rebate: double
+    +CashRebate(rebate: double)
+    +AcceptCash(money: double): double
+}
+
+class CashReturn {
+    -condition: double
+    -return: double
+    +CashReturn(condition: double, mReturn: double)
+    +AcceptCash(money: double): double
+}
+
+class CashContext {
+    -cash: AbstractCash
+    +StrategyType: string
+    +CashContext(type: string)
+    +GetResult(money: double): double
+}
+
+class Client {
+    +Main(): void
+}
+
+Strategy <|-- ConcreteStrategyA
+Strategy <|-- ConcreteStrategyB
+Strategy <|-- ConcreteStrategyC
+Context -> Strategy
+
+AbstractCash <|-- CashNormal
+AbstractCash <|-- CashRebate
+AbstractCash <|-- CashReturn
+CashContext -> AbstractCash
+
+Client -> Context : uses
+Client -> CashContext : uses
+
+note right of Strategy
+  Strategy defines interface
+  common to all concrete
+  strategy algorithms
+end note
+
+note right of Context
+  Context maintains reference
+  to Strategy object and
+  delegates algorithm to it
+end note
+
+note right of CashContext
+  Context combines strategy
+  selection with factory pattern
+  for cash calculation strategies
+end note
+
+@enduml

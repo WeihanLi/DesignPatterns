@@ -1,0 +1,82 @@
+@startuml State Pattern
+!theme plain
+
+title State Pattern
+
+class Work {
+    -currentState: WorkState
+    +Hour: int
+    +TaskFinished: bool
+    +Work()
+    +SetState(workState: WorkState): void
+    +WriteProgram(): void
+}
+
+abstract class WorkState {
+    +{abstract} WriteProgram(work: Work): void
+}
+
+class ForenoonState {
+    +WriteProgram(work: Work): void
+}
+
+class NoonState {
+    +WriteProgram(work: Work): void
+}
+
+class AfternoonState {
+    +WriteProgram(work: Work): void
+}
+
+class EveningState {
+    +WriteProgram(work: Work): void
+}
+
+class RestState {
+    +WriteProgram(work: Work): void
+}
+
+class SleepingState {
+    +WriteProgram(work: Work): void
+}
+
+class Client {
+    +Main(): void
+}
+
+Work -> WorkState : current state
+WorkState <|-- ForenoonState
+WorkState <|-- NoonState
+WorkState <|-- AfternoonState
+WorkState <|-- EveningState
+WorkState <|-- RestState
+WorkState <|-- SleepingState
+
+ForenoonState ..> NoonState : transitions to
+NoonState ..> AfternoonState : transitions to
+AfternoonState ..> EveningState : transitions to
+EveningState ..> RestState : transitions to
+EveningState ..> SleepingState : transitions to
+
+Client -> Work : uses
+
+note right of Work
+  Context maintains reference
+  to current state and delegates
+  state-specific behavior to it
+end note
+
+note right of WorkState
+  State defines interface for
+  encapsulating behavior associated
+  with particular state of Context
+end note
+
+note bottom of ForenoonState
+  Concrete states implement
+  behavior associated with
+  state of Context and handle
+  state transitions
+end note
+
+@enduml

@@ -1,0 +1,61 @@
+@startuml Facade Pattern
+!theme plain
+
+title Facade Pattern
+
+class SubSystem1 {
+    +MethodA(): void
+    +MethodB(): void
+}
+
+class SubSystem2 {
+    +MethodA(): void
+    +MethodB(): void
+}
+
+class SubSystem3 {
+    +MethodA(): void
+    +MethodB(): void
+}
+
+class Facade {
+    -subSystem1: SubSystem1
+    -subSystem2: SubSystem2
+    -subSystem3: SubSystem3
+    +MethodA(): void
+    +MethodB(): void
+}
+
+class Client {
+    +Main(): void
+}
+
+Facade *-- SubSystem1
+Facade *-- SubSystem2
+Facade *-- SubSystem3
+
+Client -> Facade : uses
+Client -.-> SubSystem1 : doesn't access directly
+Client -.-> SubSystem2 : doesn't access directly
+Client -.-> SubSystem3 : doesn't access directly
+
+note right of Facade
+  Facade provides unified
+  interface to set of
+  interfaces in subsystem
+end note
+
+note left of SubSystem1
+  Subsystem classes implement
+  subsystem functionality
+  but have no knowledge
+  of facade
+end note
+
+note bottom of Client
+  Client communicates with
+  subsystem only through
+  facade interface
+end note
+
+@enduml

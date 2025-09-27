@@ -1,0 +1,93 @@
+@startuml Decorator Pattern
+!theme plain
+
+title Decorator Pattern
+
+abstract class Component {
+    +{abstract} Operation(): void
+}
+
+class ConcreteComponent {
+    +Operation(): void
+}
+
+abstract class Decorator {
+    #Component: Component
+    +SetComponent(component: Component): void
+    +Operation(): void
+}
+
+class DecoratorA {
+    -state: string
+    +Operation(): void
+}
+
+class DecoratorB {
+    +Operation(): void
+    -AddBehavior(): void
+}
+
+class Person {
+    #Name: string
+    +Person()
+    +Person(name: string)
+    +Show(): void
+}
+
+class Finery {
+    #Person: Person
+    +Decorate(person: Person): void
+    +Show(): void
+}
+
+class Tshirts {
+    +Show(): void
+}
+
+class Pants {
+    +Show(): void
+}
+
+class Client {
+    +Main(): void
+}
+
+Component <|-- ConcreteComponent
+Component <|-- Decorator
+Decorator <|-- DecoratorA
+Decorator <|-- DecoratorB
+Decorator -> Component : wraps
+
+Person <|-- Finery
+Finery <|-- Tshirts
+Finery <|-- Pants
+Finery -> Person : decorates
+
+Client -> Component : uses
+Client -> Person : uses
+
+note right of Component
+  Base interface for objects
+  that can have responsibilities
+  added to them dynamically
+end note
+
+note right of Decorator
+  Maintains reference to 
+  Component object and defines
+  interface that conforms to
+  Component's interface
+end note
+
+note right of DecoratorA
+  Adds additional state
+  and behavior
+end note
+
+note right of Person
+  Concrete component that
+  can be decorated with
+  various clothing items
+end note
+
+@enduml

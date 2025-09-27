@@ -1,0 +1,62 @@
+@startuml Proxy Pattern
+!theme plain
+
+title Proxy Pattern
+
+abstract class Subject {
+    +{abstract} Request(): void
+}
+
+class RealSubject {
+    +Request(): void
+}
+
+class Proxy0 {
+    -subject: Subject
+    +Request(): void
+}
+
+class Proxy {
+    -subject: Subject
+    +Proxy(subject: Subject)
+    +Request(): void
+}
+
+class Client {
+    +Main(): void
+}
+
+Subject <|-- RealSubject
+Subject <|-- Proxy0
+Subject <|-- Proxy
+
+Proxy0 -> RealSubject : creates
+Proxy -> Subject : delegates to
+
+Client -> Subject : uses
+
+note right of Subject
+  Subject defines common
+  interface for RealSubject
+  and Proxy so Proxy can be
+  used anywhere RealSubject is
+end note
+
+note right of RealSubject
+  RealSubject defines the
+  real object that the
+  proxy represents
+end note
+
+note right of Proxy0
+  Lazy loading proxy - creates
+  RealSubject only when needed
+end note
+
+note right of Proxy
+  Proxy maintains reference
+  to subject and controls
+  access to it
+end note
+
+@enduml
