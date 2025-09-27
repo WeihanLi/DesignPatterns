@@ -41,7 +41,7 @@ Open the .puml files and render them as PNG/SVG images
 - Flyweight Pattern
 - Proxy Pattern
 
-### Behavioral Patterns (12)
+### Behavioral Patterns (11)
 - Observer Pattern
 - Template Method Pattern
 - Command Pattern
