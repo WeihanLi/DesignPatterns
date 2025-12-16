@@ -12,7 +12,7 @@
     <Copyright>Copyright 2017-$([System.DateTime]::Now.Year) (c) WeihanLi</Copyright>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WeihanLi.Common" Version="1.0.82" />
+    <PackageReference Include="WeihanLi.Common" Version="1.0.84" />
   </ItemGroup>
   <ItemGroup>
     <Using Include="Microsoft.Extensions.DependencyInjection" />
