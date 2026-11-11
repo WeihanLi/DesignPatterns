@@ -8,7 +8,7 @@ on:
 
 jobs:
   windows-build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v7
     - name: Setup .NET SDK
@@ -17,6 +17,6 @@ jobs:
         dotnet-version: |
           11.0.x
     - name: dotnet info
-      run: dnx dotnet-execuete --info
+      run: dnx dotnet-execute --info
     - name: build
       run: dotnet build -c Release
